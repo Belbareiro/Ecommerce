@@ -4,6 +4,7 @@ import icon from '../assets/icon.png';
 import photo1 from '../assets/photo1.jpg';
 import photo2 from '../assets/photo2.jpg';
 import photo3 from '../assets/photo3.jpg';
+import Header from '../../components/Header';
 
 const PageSection = () => {
   const photos = [
@@ -14,11 +15,12 @@ const PageSection = () => {
 
   return (
     <div className="page-section">
+      <Header />
       <header className="header">
         <img src={icon} alt="Icono" className="icon" />
         <h1 className="page-name">Nombre de la Página</h1>
       </header>
-      <div className="content">
+      <div className="content" id="content">
         {photos.map(photo => (
           <div className="photo" key={photo.id}>
             <img src={photo.src} alt={`Foto ${photo.id}`} />
