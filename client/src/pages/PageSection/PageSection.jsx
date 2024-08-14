@@ -17,6 +17,8 @@ const PageSection = () => {
     <div className="page-section">
       <Header />
       <header className="header">
+        <img src={icon} alt="Icono" className="icon" />
+        <h1 className="page-name">Nombre de la Página</h1>
       </header>
       <div className="content" id="content">
         {photos.map(photo => (
