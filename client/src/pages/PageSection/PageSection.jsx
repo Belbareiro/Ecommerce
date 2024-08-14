@@ -8,9 +8,9 @@ import Header from '../../components/Header';
 
 const PageSection = () => {
   const photos = [
-    { id: 1, src: photo1, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', buttonText: 'Shop Now' },
-    { id: 2, src: photo2, description: 'Sed ac magna vel magna bibendum, egestas magna vel.', buttonText: 'Shop Now' },
-    { id: 3, src: photo3, description: 'Vestibulum ante ipsum primis in faucibus orci luctus et.', buttonText: 'Check Out' },
+    { id: 1, src: photo1, title: '20% Off on glasses for you', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', buttonText: 'SHOP NOW' },
+    { id: 2, src: photo2, title: 'Long-sleeved shirts: style and comfort for men.', description: 'Sed ac magna vel magna bibendum, egestas magna vel.', buttonText: 'SHOP NOW' },
+    { id: 3, src: photo3, title: 'Look now at the products we have for you', description: 'Vestibulum ante ipsum primis in faucibus orci luctus et.', buttonText: 'CHECK OUT' },
   ];
 
   return (
@@ -19,13 +19,20 @@ const PageSection = () => {
       <header className="header">
         <img src={icon} alt="Icono" className="icon" />
         <h1 className="page-name">Nombre de la Página</h1>
+        <img src={icon} alt="Icono" className="icon" />
+        <h1 className="page-name">Nombre de la Página</h1>
+        <img src={icon} alt="Icono" className="icon" />
+        <h1 className="page-name">Nombre de la Página</h1>
+        <img src={icon} alt="Icono" className="icon" />
+        <h1 className="page-name">Nombre de la Página</h1>
       </header>
       <div className="content" id="content">
         {photos.map(photo => (
           <div className="photo" key={photo.id}>
             <img src={photo.src} alt={`Foto ${photo.id}`} />
-            <button className="button">{photo.buttonText}</button>
+            <h2 className="title">{photo.title}</h2>
             <p className="description">{photo.description}</p>
+            <button className="button">{photo.buttonText}</button>
           </div>
         ))}
       </div>
