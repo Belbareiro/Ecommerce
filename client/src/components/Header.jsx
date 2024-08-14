@@ -9,7 +9,7 @@ const Header = () => {
             <p>25% Off On All Products</p>
             <button className="comprar-ahora-boton">
                 {/* Desplaza hasta el componente de ofertas */}
-                <a href="#content">SHOP NOW</a>
+                <a href="#contentOne">SHOP NOW</a>
             </button>
             <button className="encontrar-mas-boton">
                 <Link to="/">FIND MORE</Link>
