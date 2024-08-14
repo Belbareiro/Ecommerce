@@ -31,7 +31,7 @@ const PageSection = () => {
         {photos.map(photo => (
           <div className="photo" key={photo.id}>
             <img src={photo.src} alt={`Foto ${photo.id}`} />
-            <h2 className="title">{photo.title}</h2>
+           <div className='containerTitle'> <h2 className="title">{photo.title}</h2></div>
             <p className="description">{photo.description}</p>
             <button className="button">{photo.buttonText}</button>
           </div>
