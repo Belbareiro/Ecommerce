@@ -52,7 +52,7 @@ const Register = () => {
                         required
                     />
                 </div>
-                <button type="submit">Registrar</button>
+                <button type="submit" className="register-btn">Registrar</button>
             </form>
         </div>
     );
