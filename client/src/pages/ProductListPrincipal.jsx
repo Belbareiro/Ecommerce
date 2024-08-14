@@ -1,6 +1,4 @@
-
 import React from 'react';
-import PageSection from './PageSection/PageSection';
 import accesoriosParaHombre from '../pages/assets/accesoriosParaHombre.jpg';
 import pantalonParaHombre from '../pages/assets/pantalonParaHombre.jpg';
 import shortParaDama from'../pages/assets/shortParaDama.jpg';
@@ -13,7 +11,6 @@ const ProducListPrincipal = () => {
       ];
     return (
         <div className="page-section">
-            <PageSection/>
             <h1>Lista De Productos Principales</h1>
             <div className="content" id="content">
         {photos.map(photo => (
