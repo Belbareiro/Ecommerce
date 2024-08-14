@@ -1,0 +1,34 @@
+.navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #007bff;
+        padding: 10px;
+    }
+
+.navbar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    }
+
+.navbar-menu li {
+        margin-right: 15px;
+    }
+
+.navbar-menu li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+.navbar-menu li a:hover {
+        text-decoration: underline;
+    }
+
+/*().icon-user::before,
+.icon-cart::before {
+        content: url('/client/src/pages/assets/usuario.jpg'); /* Reemplaza con la URL de tus iconos */
+        margin-right: 5px;
+    }*/
