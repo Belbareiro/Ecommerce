@@ -1,0 +1,43 @@
+body {
+    background-color: #f0f0f0;
+    /* Fondo gris */
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+}
+
+.item {
+    margin: 10px;
+    text-align: center;
+}
+
+.item a {
+    text-decoration: none;
+}
+
+.item img {
+    width: 150px;
+    /* Tamaño uniforme para todas las imágenes */
+    height: 150px;
+    /* Tamaño uniforme para todas las imágenes */
+    object-fit: cover;
+    /* Mantiene la proporción de las imágenes */
+}
+
+.title {
+    font-weight: bold;
+}
+
+.category {
+    color: #555;
+}
+
+.price {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #555;
+}

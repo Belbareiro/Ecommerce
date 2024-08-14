@@ -26,32 +26,40 @@
 }
 
 .content .photo {
-    width: 30%; /* Set width for each photo container */
-    height: 300px; /* Set a fixed height for uniformity */
+    width: 30%;
+    /* Set width for each photo container */
+    height: 300px;
+    /* Set a fixed height for uniformity */
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Center content vertically */
-    overflow: hidden; /* Prevent overflow */
+    justify-content: center;
+    /* Center content vertically */
+    overflow: hidden;
+    /* Prevent overflow */
 }
 
 .content .photo img {
-    width: 100%; /* Make image take full width */
-    height: 100%; /* Make image take full height */
-    object-fit: cover; /* Cover the container without distortion */
-    filter: brightness(0.4);
+    width: 100%;
+    /* Make image take full width */
+    height: 100%;
+    /* Make image take full height */
+    object-fit: cover;
+    /* Cover the container without distortion */
+    filter: brightness(0.6);
 }
 
 
 .content .photo .title {
     width: 280px;
     position: absolute;
-    top: 50%; /* Center title vertically */
+    top: 60%;
+    /* Center title vertically */
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
     text-align: center;
     padding: 10px 15px;
@@ -61,7 +69,8 @@
 
 .content .photo .description {
     position: absolute;
-    top: 70%; /* Position below the title */
+    top: 70%;
+    /* Position below the title */
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 10px;
@@ -77,8 +86,10 @@
 
 .content .photo .button {
     position: absolute;
-    bottom: 10px; /* Position button at the bottom */
-    left: 10px; /* Align button to the left */
+    bottom: 10px;
+    /* Position button at the bottom */
+    left: 10px;
+    /* Align button to the left */
     background-color: #b7bcc2;
     color: #0f0e0e;
     font-weight: bold;
