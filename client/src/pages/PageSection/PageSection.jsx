@@ -5,6 +5,7 @@ import photo1 from '../assets/photo1.jpg';
 import photo2 from '../assets/photo2.jpg';
 import photo3 from '../assets/photo3.jpg';
 import Header from '../../components/Header';
+import ProductListPrincipal from '../ProductListPrincipal';
 
 const PageSection = () => {
   const photos = [
@@ -29,6 +30,7 @@ const PageSection = () => {
           </div>
         ))}
       </div>
+      <ProductListPrincipal />
     </div>
   );
 };
