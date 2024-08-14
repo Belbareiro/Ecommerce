@@ -9,7 +9,8 @@ const App = () => {
       <Navbar/>
       <Routes>
         <Route path="/" element={<Products />} />
-        {/* Add more routes as needed */}
+        <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
       </Routes>
     </div>
   );
