@@ -26,9 +26,3 @@
 .navbar-menu li a:hover {
         text-decoration: underline;
     }
-
-/*().icon-user::before,
-.icon-cart::before {
-        content: url('/client/src/pages/assets/usuario.jpg'); /* Reemplaza con la URL de tus iconos */
-        margin-right: 5px;
-    }/*
