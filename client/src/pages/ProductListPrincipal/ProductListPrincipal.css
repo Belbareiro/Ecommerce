@@ -58,7 +58,7 @@
 .icons {
     display: flex;
     flex-direction: row;
-    margin-top: 100px;
+    margin-top: 200px;
     gap: 20px;
     justify-content: center;
 }

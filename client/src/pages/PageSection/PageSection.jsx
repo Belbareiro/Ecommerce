@@ -1,11 +1,12 @@
 import React from 'react';
 import '../PageSection/PageSection.css';
-import icon from '../assets/pageSection/icon.png';
+import icon from '../assets/pageSection/icon.jpg';
 import photo1 from '../assets/pageSection/photo1.jpg';
 import photo2 from '../assets/pageSection/photo2.jpg';
 import photo3 from '../assets/pageSection/photo3.jpg';
 import Header from '../../components/Header';
 import ProductListPrincipal from '../ProductListPrincipal/ProductListPrincipal';
+import Footer from '../../components/Footer';
 
 const PageSection = () => {
   const photos = [
@@ -19,13 +20,15 @@ const PageSection = () => {
       <Header />
       <header className="header">
         <img src={icon} alt="Icono" className="icon" />
-        <h1 className="page-name">Nombre de la Página</h1>
+
         <img src={icon} alt="Icono" className="icon" />
-        <h1 className="page-name">Nombre de la Página</h1>
+
         <img src={icon} alt="Icono" className="icon" />
-        <h1 className="page-name">Nombre de la Página</h1>
+
         <img src={icon} alt="Icono" className="icon" />
-        <h1 className="page-name">Nombre de la Página</h1>
+
+        <img src={icon} alt="Icono" className="icon" />
+
       </header>
       <div className="content" id="contentOne">
         {photos.map(photo => (
@@ -38,6 +41,7 @@ const PageSection = () => {
         ))}
       </div>
       <ProductListPrincipal />
+      <Footer />
     </div>
   );
 };
