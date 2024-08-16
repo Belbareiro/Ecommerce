@@ -28,17 +28,20 @@ const images = [
 const ProducListPrincipal = () => {
   return (
     <div className="gallery">
-      {images.map((image, index) => (
-        <div className="item" key={index}>
-          <a href={image.link}>
-            <img src={image.src} alt={image.title} />
-            <div className="title">{image.title}</div>
-            <div className="price" >
-              ${image.price.toFixed(2)} {/* Formato de precio con dos decimales */} </div>
-            <div className="category">{image.category}</div>
-          </a>
-        </div>
-      ))}
+      <div className='featured'><h2>Featured products</h2></div>
+      <div className='seccion'>
+        {images.map((image, index) => (
+          <div className="item" key={index}>
+            <a href={image.link}>
+              <img src={image.src} alt={image.title} />
+              <div className="title">{image.title}</div>
+              <div className="price" >
+                ${image.price.toFixed(2)} {/* Formato de precio con dos decimales */} </div>
+              <div className="category">{image.category}</div>
+            </a>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
