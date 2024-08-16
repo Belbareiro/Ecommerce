@@ -1,5 +1,5 @@
 .gallery {
-    background-color: rgb(219, 219, 218);
+    background-color: rgb(236, 236, 236);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -53,4 +53,22 @@
     font-size: 14px;
     margin-top: 5px;
     color: #555;
+}
+
+.icons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 100px;
+    gap: 20px;
+    justify-content: center;
+}
+
+.icons img {
+    width: 50px;
+}
+
+.icons .iconSeccion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
