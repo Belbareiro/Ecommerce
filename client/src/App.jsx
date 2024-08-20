@@ -8,7 +8,8 @@ import CargarProductos from './pages/CargarProductos';
 
 const App = () => {
   const [cartCount, setCartCount] = useState(0);
-
+  
+  //se ejecuta cada vez que hagas SHOP NOW un producto al carrito. 
   const handleAddToCart = () => {
     setCartCount(cartCount + 1);
   };
