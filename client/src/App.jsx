@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Products from './pages/PageSection/PageSection';
 import Navbar from './components/Navbar';
