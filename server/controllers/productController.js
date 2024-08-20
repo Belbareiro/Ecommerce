@@ -3,8 +3,8 @@ const Product = require('../models/Product');
 // Crear un nuevo producto
 exports.createProduct = async (req, res) => {
     try {
-        const { name, price, description, category, image, size, color } = req.body;
-        const newProduct = new Product({ name, price, description, category, image, size, color });
+        const { nombre, precio, descripcion, categoria, imagen, tamaño, color } = req.body;
+        const newProduct = new Product({ nombre, precio, descripcion, categoria, imagen, tamaño, color });
         await newProduct.save();
         res.status(201).json(newProduct);
     } catch (error) {
@@ -27,8 +27,8 @@ exports.getAllProducts = async (req, res) => {
 // Obtener productos por categoría
 exports.getProductsByCategory = async (req, res) => {
     try {
-        const { category } = req.params;
-        const products = await Product.find({ category });
+        const { categoria } = req.params;
+        const products = await Product.find({ categoria });
         res.status(200).json(products);
     } catch (error) {
         console.error('Error al obtener los productos por categoría:', error);
@@ -53,10 +53,10 @@ exports.getProductById = async (req, res) => {
 // Actualizar un producto específico por ID
 exports.updateProduct = async (req, res) => {
     try {
-        const { name, price, description, category, image, size, color } = req.body;
+        const { nombre, precio, descripcion, categoria, imagen, tamaño, color } = req.body;
         const updatedProduct = await Product.findByIdAndUpdate(
             req.params.id,
-            { name, price, description, category, image, size, color },
+            { nombre, precio, descripcion, categoria, imagen, tamaño, color },
             { new: true }
         );
         if (!updatedProduct) {

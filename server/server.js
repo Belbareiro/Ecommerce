@@ -17,8 +17,6 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
     .catch(err => console.error(err));
 
 // Rutas
-const categoryRoutes = require('./routes/Category.routes');
-app.use('/api/categories', categoryRoutes);
 const productRoutes = require('./routes/products');
 app.use('/api/products', productRoutes);
 
