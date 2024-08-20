@@ -8,7 +8,7 @@ import Header from '../../components/Header';
 import ProductListPrincipal from '../ProductListPrincipal/ProductListPrincipal';
 import Footer from '../../components/Footer';
 
-const PageSection = () => {
+const PageSection = ({ onAddToCart }) => {
   const photos = [
     { id: 1, src: photo1, title: '20% Off on glasses for you', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', buttonText: 'SHOP NOW' },
     { id: 2, src: photo2, title: 'Long-sleeved shirts: style and comfort for men', description: 'Sed ac magna vel magna bibendum, egestas magna vel.', buttonText: 'SHOP NOW' },
@@ -36,7 +36,12 @@ const PageSection = () => {
             <img src={photo.src} alt={`Foto ${photo.id}`} />
             <div className='containerTitle'> <h2 className="title">{photo.title}</h2></div>
             <p className="description">{photo.description}</p>
-            <button className="button">{photo.buttonText}</button>
+            <button 
+              className="button" 
+              onClick={photo.buttonText === 'SHOP NOW' ? onAddToCart : undefined}
+            >
+              {photo.buttonText}
+            </button>
           </div>
         ))}
       </div>
