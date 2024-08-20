@@ -19,6 +19,7 @@ const Navbar = ({ cartCount }) => {
           <li><a href="#">CONTACT US</a></li>
           <li><a href="#">$0.00</a></li>
           <li><a href="#"><FaUser /></a></li>
+          {/* Aquí se muestra el ícono del carrito y el contador actual del carrito */}
           <li><a href="#"><FaShoppingCart /> {cartCount}</a></li>
         </ul>
       </div>
