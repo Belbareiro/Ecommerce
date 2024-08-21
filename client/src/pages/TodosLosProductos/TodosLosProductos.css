@@ -1,0 +1,10 @@
+.galeria {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.todos-los-productos .galeria img {
+    width: 200px;
+}

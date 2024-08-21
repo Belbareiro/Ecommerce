@@ -1,10 +1,26 @@
 const Product = require('../models/Product');
+const multer = require('multer');
+const path = require('path');
+
+
+// Configuración de Multer para manejar la subida de archivos
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/');
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname)); // Guarda el archivo con un nombre único
+    },
+});
+
+const upload = multer({ storage });
 
 // Crear un nuevo producto
 exports.createProduct = async (req, res) => {
     try {
-        const { nombre, precio, descripcion, categoria, imagen, tamaño, color } = req.body;
-        const newProduct = new Product({ nombre, precio, descripcion, categoria, imagen, tamaño, color });
+        const { nombre, precio, descripcion, categoria } = req.body;
+        const imagen = req.file.filename; // Obtener la ruta de la imagen
+        const newProduct = new Product({ nombre, precio, descripcion, categoria, imagen });
         await newProduct.save();
         res.status(201).json(newProduct);
     } catch (error) {
@@ -24,39 +40,13 @@ exports.getAllProducts = async (req, res) => {
     }
 };
 
-// Obtener productos por categoría
-exports.getProductsByCategory = async (req, res) => {
-    try {
-        const { categoria } = req.params;
-        const products = await Product.find({ categoria });
-        res.status(200).json(products);
-    } catch (error) {
-        console.error('Error al obtener los productos por categoría:', error);
-        res.status(500).json({ message: error.message });
-    }
-};
-
-// Obtener un producto específico por ID
-exports.getProductById = async (req, res) => {
-    try {
-        const product = await Product.findById(req.params.id);
-        if (!product) {
-            return res.status(404).json({ message: 'Producto no encontrado' });
-        }
-        res.status(200).json(product);
-    } catch (error) {
-        console.error('Error al obtener el producto:', error);
-        res.status(500).json({ message: error.message });
-    }
-};
-
-// Actualizar un producto específico por ID
+// Otras funciones para actualizar y eliminar productos
 exports.updateProduct = async (req, res) => {
     try {
-        const { nombre, precio, descripcion, categoria, imagen, tamaño, color } = req.body;
+        const { nombre, precio, descripcion, categoria } = req.body;
         const updatedProduct = await Product.findByIdAndUpdate(
             req.params.id,
-            { nombre, precio, descripcion, categoria, imagen, tamaño, color },
+            { nombre, precio, descripcion, categoria },
             { new: true }
         );
         if (!updatedProduct) {
@@ -82,3 +72,6 @@ exports.deleteProduct = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+// Exportar el middleware de Multer para su uso en las rutas
+exports.upload = upload;

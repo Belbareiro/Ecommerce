@@ -31,8 +31,8 @@ const PageSection = ({ onAddToCart }) => { // onAddToCart es una función que se
             <img src={photo.src} alt={`Foto ${photo.id}`} />
             <div className='containerTitle'> <h2 className="title">{photo.title}</h2></div>
             <p className="description">{photo.description}</p>
-            <button 
-              className="button" 
+            <button
+              className="button"
               // Si el texto del botón es 'SHOP NOW', se asigna la función onAddToCart al evento onClick
               onClick={photo.buttonText === 'SHOP NOW' ? onAddToCart : undefined}
             >
@@ -42,7 +42,6 @@ const PageSection = ({ onAddToCart }) => { // onAddToCart es una función que se
         ))}
       </div>
       <ProductListPrincipal />
-      <Footer />
     </div>
   );
 };
