@@ -13,7 +13,7 @@ const AdminPage = () => {
         <div>
             <h1>Página de Administrador</h1>
             <CargarProductos actualizarListaProductos={actualizarListaProductos} />
-            <ProductList productos={productos} /> {/* Asegúrate de pasar los productos */}
+            <ProductList productos={productos} />
         </div>
     );
 };

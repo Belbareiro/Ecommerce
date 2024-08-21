@@ -1,4 +1,3 @@
-// ProductosPorCategoria.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -13,7 +12,7 @@ const ProductosPorCategoria = () => {
     useEffect(() => {
         const fetchProductos = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/products?categoria=${categoria}`); // Cambia la URL si es necesario
+                const response = await axios.get(`http://localhost:5000/api/products?categoria=${categoria}`);
                 setProductos(response.data);
             } catch (error) {
                 console.error('Error al obtener los productos:', error);
