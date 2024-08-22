@@ -64,9 +64,9 @@ const CargarProductos = ({ actualizarListaProductos }) => {
                     <label htmlFor="categoria">Categoría:</label>
                     <select id="categoria" value={categoria} onChange={(e) => setCategoria(e.target.value)} required>
                         <option value="">Selecciona una categoría</option>
-                        <option value="women">Women</option>
-                        <option value="men">Men</option>
-                        <option value="accessories">Accessories</option>
+                        <option value="women">Mujer</option>
+                        <option value="men">Hombre</option>
+                        <option value="accessories">Accesorios</option>
                     </select>
                 </div>
                 <div>
