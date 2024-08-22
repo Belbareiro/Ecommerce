@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../TodosLosProductos/TodosLosProductos.css'
+import './TodosLosProductos.css'; // Asegúrate de tener esta hoja de estilos
 
-
-const TodosLosProductos = () => {
+const TodosLosProductos = ({ onAddToCart }) => {
     const [productos, setProductos] = useState([]);
     const [error, setError] = useState(null);
 
@@ -24,7 +23,7 @@ const TodosLosProductos = () => {
     return (
         <div className="todos-los-productos">
             <h2>Todos los Productos</h2>
-            {error && <p className="error">{error}</p>} {/* Mostrar mensaje de error si hay */}
+            {error && <p className="error">{error}</p>}
 
             <div className="galeria">
                 {productos.length > 0 ? (
@@ -35,6 +34,7 @@ const TodosLosProductos = () => {
                             <p>Precio: ${producto.precio}</p>
                             <p>{producto.descripcion}</p>
                             <p>Categoría: {producto.categoria}</p>
+                            <button onClick={() => onAddToCart(producto)}>Añadir al carrito</button>
                         </div>
                     ))
                 ) : (
