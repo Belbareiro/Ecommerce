@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import '../ProductosPorCategoria/ProductosPorCategoria.css'
 
 
-const ProductosPorCategoria = () => {
+const ProductosPorCategoria = ({ onAddToCart }) => {
     const { categoria } = useParams(); // Obtiene la categoría de la URL
     const [productos, setProductos] = useState([]);
     const [error, setError] = useState(null);
@@ -37,6 +37,7 @@ const ProductosPorCategoria = () => {
                             <p>Precio: ${producto.precio}</p>
                             <p>{producto.descripcion}</p>
                             <p>Categoría: {producto.categoria}</p>
+                            <button onClick={() => onAddToCart(producto)}>Añadir al carrito</button>
                         </div>
                     ))
                 ) : (
