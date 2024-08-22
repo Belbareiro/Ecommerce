@@ -44,7 +44,7 @@ const Carrito = ({ itemsCarrito, completarCompra }) => {
                 />
                 <div className="carrito-item-details"> {/* Detalles del producto */}
                   <h3>{item.nombre}</h3>
-                  <p>Precio: {item.precio} Gs.</p>
+                  <p>Precio individual: {item.precio} Gs.</p>
                   <p>Cantidad: {item.cantidad}</p>
                 </div>
               </li>
