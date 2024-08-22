@@ -6,7 +6,7 @@ import photo2 from '../assets/pageSection/photo2.jpg';
 import photo3 from '../assets/pageSection/photo3.jpg';
 import Header from '../../components/Header';
 import ProductListPrincipal from '../ProductListPrincipal/ProductListPrincipal';
-import Footer from '../../components/Footer';
+
 
 const PageSection = () => {
   const photos = [

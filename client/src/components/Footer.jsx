@@ -23,7 +23,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div>
-                    <h2> <Link to="men">For Her </Link></h2>
+                    <h2> <Link to="hombre">For Her </Link></h2>
                     <ul>
                         <li>Vaqueros de hombre</li>
                         <li>Camisas de hombre</li>

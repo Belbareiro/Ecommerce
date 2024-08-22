@@ -30,7 +30,7 @@ const ProductList = () => {
                         return (
                             <div key={producto._id} className="product-card">
                                 <h3>{producto.nombre}</h3>
-                                <p>Precio: ${producto.precio}</p>
+                                <p>Precio: Gs {producto.precio}</p>
                                 <p>Descripción: {producto.descripcion}</p>
                                 <p>Categoría: {producto.categoria}</p>
                                 {/* Mostrar la imagen */}
