@@ -1,0 +1,139 @@
+.carrito {
+  /* Contenedor principal del carrito, centrado y con padding */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carrito-contenido {
+  /* Contenedor que distribuye la lista de productos y el resumen en dos columnas */
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  align-items: flex-start;
+}
+
+.carrito-lista {
+  /* Lista de productos dentro del carrito, ajustada para ocupar espacio */
+  flex: 1;
+  max-height: 500px; 
+  margin-right: 20px;
+}
+
+.carrito-resumen {
+  /* Resumen de la compra, con un estilo de caja y sombra */
+  margin-top: 40px;
+  width: 300px; 
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.carrito-resumen-item {
+  /* Organización de los elementos dentro del resumen (total y monto) */
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.carrito-total-titulo {
+  /* Estilo para el título "Total" del resumen */
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.carrito-total-monto {
+  /* Estilo para el monto total, más pequeño y discreto */
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: normal;
+}
+
+.carrito-completar-compra-button {
+  /* Botón de completar compra, con estilos de color, sombras y bordes redondeados */
+  margin-top: 25px;
+  margin-left: 50px;
+  padding: 12px 20px;
+  width: 100%;
+  max-width: 200px;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.carrito-completar-compra-button:hover {
+  /* Efecto hover: Cambia color y eleva el botón */
+  background-color: green;
+  transform: translateY(-3px);
+}
+
+.carrito-completar-compra-button:active {
+  /* Efecto al hacer clic: Botón se baja ligeramente */
+  transform: translateY(1px);
+}
+
+.carrito li {
+  /* Estilo para los elementos de la lista de productos */
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.carrito-item-details {
+  /* Espacio y ajuste para los detalles del producto */
+  margin-left: 10px;
+  flex: 1;
+}
+
+.carrito img {
+  /* Estilo de las imágenes del producto */
+  width: 100px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.mensaje-exito {
+  /* Mensaje de éxito centrado */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.mensaje-exito h3 {
+  /* Estilo del título del mensaje de éxito */
+  color: green;
+  font-size: 2rem;
+}
+
+.mensaje-exito p {
+  /* Estilo del texto del mensaje de éxito */
+  font-size: 1.2rem;
+}
+
+.mensaje-carrito-vacio {
+  /* Mensaje de carrito vacío, centrado */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.mensaje-carrito-vacio h3 {
+  /* Estilo del mensaje de carrito vacío */
+  color: red;
+  font-size: 2rem;
+}
