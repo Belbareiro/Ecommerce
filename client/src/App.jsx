@@ -8,14 +8,39 @@ import Register from './pages/Register';
 import AdminPage from './pages/AdminPage/AdminPage';
 import TodosLosProductos from './pages/TodosLosProductos/TodosLosProductos';
 import ProductosPorCategoria from './pages/ProductosPorCategoria/ProductosPorCategoria';
+import Carrito from './pages/Carrito/Carrito';
+
 const App = () => {
   const [cartCount, setCartCount] = useState(0);
+  const [itemsCarrito, setItemsCarrito] = useState([]);
 
-  //se ejecuta cada vez que hagas SHOP NOW un producto al carrito. 
-  const handleAddToCart = () => {
-    setCartCount(cartCount + 1);
+const handleAddToCart = (producto) => {
+  // Actualiza el estado del carrito con el nuevo producto
+  setItemsCarrito((prevItems) => {
+    // Verifica si el producto ya está en el carrito
+    const existingItem = prevItems.find(item => item._id === producto._id);
+
+    if (existingItem) {
+      // Si el producto ya existe en el carrito, actualiza la cantidad
+      return prevItems.map(item =>
+        item._id === producto._id
+          // Incrementa la cantidad del producto existente
+          ? { ...item, cantidad: item.cantidad + 1 }
+          // Deja el resto de los productos sin cambios
+          : item
+      );
+    }
+    // Si el producto no está en el carrito, añádelo con una cantidad inicial de 1
+    return [...prevItems, { ...producto, cantidad: 1 }];
+  });
+
+  // Actualiza el conteo del carrito
+  setCartCount(prevCount => prevCount + 1);
+};
+  const handleCompletePurchase = () => {
+    setItemsCarrito([]);
+    setCartCount(0);
   };
-
   return (
     <div>
       <Navbar cartCount={cartCount} />
@@ -24,8 +49,9 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/admin" element={<AdminPage />} />
-        <Route path="/todosLosProductos" element={<TodosLosProductos />} />
-        <Route path="/categoria/:categoria" element={<ProductosPorCategoria />} />
+        <Route path="/todosLosProductos" element={<TodosLosProductos onAddToCart={handleAddToCart} />} />
+        <Route path="/categoria/:categoria" element={<ProductosPorCategoria onAddToCart={handleAddToCart} />} />
+        <Route path="/carrito" element={<Carrito itemsCarrito={itemsCarrito} completarCompra={handleCompletePurchase} />} />
       </Routes>
       <Footer />
     </div>
