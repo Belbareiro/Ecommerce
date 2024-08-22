@@ -10,9 +10,9 @@ import Footer from '../../components/Footer';
 
 const PageSection = () => {
   const photos = [
-    { id: 1, src: photo1, title: '20% Off on glasses for you', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', buttonText: 'SHOP NOW' },
-    { id: 2, src: photo2, title: 'Long-sleeved shirts: style and comfort for men', description: 'Sed ac magna vel magna bibendum, egestas magna vel.', buttonText: 'SHOP NOW' },
-    { id: 3, src: photo3, title: 'Look now at the products we have for you', description: 'Vestibulum ante ipsum primis in faucibus orci luctus et.', buttonText: 'CHECK OUT' },
+    { id: 1, src: photo1, title: '20% de descuento en gafas para ti', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', buttonText: 'COMPRAR AHORA' },
+    { id: 2, src: photo2, title: 'Camisas de manga larga: estilo y comodidad para hombre', description: 'Sed ac magna vel magna bibendum, egestas magna vel.', buttonText: 'COMPRAR AHORA' },
+    { id: 3, src: photo3, title: 'Mira ahora los productos que tenemos para ti', description: 'Vestibulum ante ipsum primis in faucibus orci luctus et.', buttonText: 'VER MÁS' },
   ];
 
   return (
@@ -33,7 +33,7 @@ const PageSection = () => {
             <p className="description">{photo.description}</p>
             <button
               className="button"
-              >
+            >
               {photo.buttonText}
             </button>
           </div>

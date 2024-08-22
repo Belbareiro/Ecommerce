@@ -9,15 +9,15 @@ const Navbar = ({ cartCount }) => {
       <div className="navbar-left">
         <ul className="navbar-menu">
           <li><Link to="/todosLosProductos">TODO</Link></li>
-          <li><Link to="/categoria/women">MUJERES</Link></li>
-          <li><Link to="/categoria/men">HOMBRES</Link></li>
-          <li><Link to="/categoria/accessories">ACCESORIOS</Link></li>
+          <li><Link to="/categoria/mujer">MUJERES</Link></li>
+          <li><Link to="/categoria/hombre">HOMBRES</Link></li>
+          <li><Link to="/categoria/accesorios">ACCESORIOS</Link></li>
         </ul>
       </div>
       <div className="navbar-right">
         <ul className="navbar-menu">
-          <li><Link to="/about">ACERCA DE</Link></li>
-          <li><Link to="/contact">CONTACTO</Link></li>
+          <li><Link to="/acercaDe">ACERCA DE</Link></li>
+          <li><Link to="/contacto">CONTACTO</Link></li>
           <li><a href="#">$0.00</a></li>
           <li><Link to="#"><FaUser /></Link></li>
           <li><Link to="/carrito"><FaShoppingCart /> {cartCount}</Link></li>
