@@ -30,12 +30,10 @@ exports.createProduct = async (req, res) => {
 };
 
 
-// Obtener productos, opcionalmente filtrando por categoría
+// Obtener todos los productos
 exports.getAllProducts = async (req, res) => {
     try {
-        const { categoria } = req.query; // Obtener el parámetro de categoría de la consulta
-        const query = categoria ? { categoria } : {}; // Filtrar por categoría si se proporciona
-        const products = await Product.find(query);
+        const products = await Product.find();
         res.status(200).json(products);
     } catch (error) {
         console.error('Error al obtener los productos:', error);
