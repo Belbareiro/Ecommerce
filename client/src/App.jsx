@@ -10,32 +10,11 @@ import AdminPage from './pages/AdminPage/AdminPage';
 import TodosLosProductos from './pages/TodosLosProductos/TodosLosProductos';
 import ProductosPorCategoria from './pages/ProductosPorCategoria/ProductosPorCategoria';
 import Carrito from './pages/Carrito/Carrito';
-import ProducListPrincipal from './pages/ProductListPrincipal/ProductListPrincipal'
 
 const App = () => {
   const [cartCount, setCartCount] = useState(0);
   const [itemsCarrito, setItemsCarrito] = useState([]);
-  const [listaDeProductosPrincipales, setlistaDeProductosPrincipales] = useState([]);//Esto hara una lista de los productos principales 
-
-const handleAddToCart = (producto) => {
-  // Actualiza el estado del carrito con el nuevo producto
-  setItemsCarrito((prevItems) => {
-    // Verifica si el producto ya está en el carrito
-    const existingItem = prevItems.find(item => item._id === producto._id);
-
-    if (existingItem) {
-      // Si el producto ya existe en el carrito, actualiza la cantidad
-      return prevItems.map(item =>
-        item._id === producto._id
-          // Incrementa la cantidad del producto existente
-          ? { ...item, cantidad: item.cantidad + 1 }
-          // Deja el resto de los productos sin cambios
-          : item
-      );
-    }
-    // Si el producto no está en el carrito, añádelo con una cantidad inicial de 1
-    return [...prevItems, { ...producto, cantidad: 1 }];
-  });
+  const [listaDeProductosPrincipales, setListaDeProductosPrincipales] = useState([]);
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
@@ -47,7 +26,6 @@ const handleAddToCart = (producto) => {
         console.error('Error al obtener los productos:', error);
       }
     };
-
     fetchProducts();
   }, []);
 
@@ -59,7 +37,6 @@ const handleAddToCart = (producto) => {
   const handleAddToCart = (producto) => {
     setItemsCarrito((prevItems) => {
       const existingItem = prevItems.find(item => item._id === producto._id);
-
       if (existingItem) {
         return prevItems.map(item =>
           item._id === producto._id
@@ -79,12 +56,16 @@ const handleAddToCart = (producto) => {
   useEffect(() => {
     const obtenerListaDeProductosPrincipales = async () => {
       const URL = "http://localhost:5000/api/products";
-      const respuesta = await axios.get(URL);
-      setlistaDeProductosPrincipales(respuesta.data);
-    }
+      try {
+        const respuesta = await axios.get(URL);
+        setListaDeProductosPrincipales(respuesta.data);
+      } catch (error) {
+        console.error('Error al obtener los productos principales:', error);
+      }
+    };
     obtenerListaDeProductosPrincipales();
-  
-  }, []);//esto  hara que se cargue en la pagina los productos principales
+  }, []);
+
   return (
     <div>
       <Navbar cartCount={cartCount} />
@@ -93,8 +74,8 @@ const handleAddToCart = (producto) => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/admin" element={<AdminPage />} />
-        {/* <Route path="/listaPrincipal" element={<ProducListPrincipal listaDeProductosPrincipales={listaDeProductosPrincipales}/>} /> 
-        ESTO ME DEBE ENLISTAR EN LA PAGINA PRINCIPAL LOS PRODUCTOS */}
+        {/* Asegúrate de que este componente esté correctamente importado */}
+        {/* <Route path="/listaPrincipal" element={<ProducListPrincipal listaDeProductosPrincipales={listaDeProductosPrincipales} />} /> */}
         <Route path="/todosLosProductos" element={<TodosLosProductos onAddToCart={handleAddToCart} />} />
         <Route path="/categoria/:categoria" element={<ProductosPorCategoria onAddToCart={handleAddToCart} />} />
         <Route path="/carrito" element={<Carrito itemsCarrito={itemsCarrito} completarCompra={handleCompletePurchase} />} />
@@ -103,5 +84,5 @@ const handleAddToCart = (producto) => {
     </div>
   );
 };
-}
+
 export default App;
