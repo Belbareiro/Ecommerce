@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from "axios";
 import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import Products from './pages/PageSection/PageSection';
@@ -104,5 +103,5 @@ const handleAddToCart = (producto) => {
     </div>
   );
 };
-
+}
 export default App;
