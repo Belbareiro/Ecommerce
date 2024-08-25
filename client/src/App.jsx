@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
 import { Routes, Route } from 'react-router-dom';
 import Products from './pages/PageSection/PageSection';
 import Navbar from './components/Navbar';
@@ -9,10 +10,12 @@ import AdminPage from './pages/AdminPage/AdminPage';
 import TodosLosProductos from './pages/TodosLosProductos/TodosLosProductos';
 import ProductosPorCategoria from './pages/ProductosPorCategoria/ProductosPorCategoria';
 import Carrito from './pages/Carrito/Carrito';
+import ProducListPrincipal from './pages/ProductListPrincipal/ProductListPrincipal'
 
 const App = () => {
   const [cartCount, setCartCount] = useState(0);
   const [itemsCarrito, setItemsCarrito] = useState([]);
+  const [listaDeProductosPrincipales, setlistaDeProductosPrincipales] = useState([]);//Esto hara una lista de los productos principales 
 
 const handleAddToCart = (producto) => {
   // Actualiza el estado del carrito con el nuevo producto
@@ -41,6 +44,16 @@ const handleAddToCart = (producto) => {
     setItemsCarrito([]);
     setCartCount(0);
   };
+
+  useEffect(() => {
+    const obtenerListaDeProductosPrincipales = async () => {
+      const URL = "http://localhost:5000/api/products";
+      const respuesta = await axios.get(URL);
+      setlistaDeProductosPrincipales(respuesta.data);
+    }
+    obtenerListaDeProductosPrincipales();
+  
+  }, []);//esto  hara que se cargue en la pagina los productos principales
   return (
     <div>
       <Navbar cartCount={cartCount} />
@@ -49,6 +62,8 @@ const handleAddToCart = (producto) => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/admin" element={<AdminPage />} />
+        {/* <Route path="/listaPrincipal" element={<ProducListPrincipal listaDeProductosPrincipales={listaDeProductosPrincipales}/>} /> 
+        ESTO ME DEBE ENLISTAR EN LA PAGINA PRINCIPAL LOS PRODUCTOS */}
         <Route path="/todosLosProductos" element={<TodosLosProductos onAddToCart={handleAddToCart} />} />
         <Route path="/categoria/:categoria" element={<ProductosPorCategoria onAddToCart={handleAddToCart} />} />
         <Route path="/carrito" element={<Carrito itemsCarrito={itemsCarrito} completarCompra={handleCompletePurchase} />} />
