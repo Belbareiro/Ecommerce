@@ -34,7 +34,7 @@ const ProductosPorCategoria = ({ onAddToCart }) => {
                         <div key={producto._id} className="producto-card">
                             <img src={`http://localhost:5000/uploads/${producto.imagen}`} alt={producto.nombre} />
                             <h3>{producto.nombre}</h3>
-                            <p>Precio: Gs {producto.precio}</p>
+                            <p>Precio: {producto.precio} Gs.</p>
                             <p>{producto.descripcion}</p>
                             <p>Categoría: {producto.categoria}</p>
                             <button onClick={() => onAddToCart(producto)}>Añadir al carrito</button>
