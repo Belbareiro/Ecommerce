@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { Routes, Route } from 'react-router-dom';
+import axios from 'axios';
 import Products from './pages/PageSection/PageSection';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -36,10 +37,41 @@ const handleAddToCart = (producto) => {
     // Si el producto no está en el carrito, añádelo con una cantidad inicial de 1
     return [...prevItems, { ...producto, cantidad: 1 }];
   });
+  const [productos, setProductos] = useState([]);
 
-  // Actualiza el conteo del carrito
-  setCartCount(prevCount => prevCount + 1);
-};
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/products');
+        setProductos(response.data);
+      } catch (error) {
+        console.error('Error al obtener los productos:', error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(itemsCarrito));
+    setCartCount(itemsCarrito.reduce((total, item) => total + item.cantidad, 0));
+  }, [itemsCarrito]);
+
+  const handleAddToCart = (producto) => {
+    setItemsCarrito((prevItems) => {
+      const existingItem = prevItems.find(item => item._id === producto._id);
+
+      if (existingItem) {
+        return prevItems.map(item =>
+          item._id === producto._id
+            ? { ...item, cantidad: item.cantidad + 1 }
+            : item
+        );
+      }
+      return [...prevItems, { ...producto, cantidad: 1 }];
+    });
+  };
+
   const handleCompletePurchase = () => {
     setItemsCarrito([]);
     setCartCount(0);
@@ -58,7 +90,7 @@ const handleAddToCart = (producto) => {
     <div>
       <Navbar cartCount={cartCount} />
       <Routes>
-        <Route path="/" element={<Products onAddToCart={handleAddToCart} />} />
+        <Route path="/" element={<Products productos={productos} onAddToCart={handleAddToCart} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/admin" element={<AdminPage />} />
@@ -72,6 +104,5 @@ const handleAddToCart = (producto) => {
     </div>
   );
 };
-
 
 export default App;

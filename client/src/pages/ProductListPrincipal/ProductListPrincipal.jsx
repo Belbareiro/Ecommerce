@@ -17,22 +17,22 @@ import secureIcon from '../assets/iconsProductListP/secureIcon.png'
 
 
 const images = [
-  { src: women1, title: 'Elegant Dress', category: 'Women', link: '#women', price: 25.99 },
-  { src: women2, title: 'Casual Blouse', category: 'Women', link: '#women', price: 30.50 },
-  { src: women3, title: 'Summer Shorts', category: 'Women', link: '#women', price: 15.75 },
-  { src: men1, title: 'Classic Jeans', category: 'Men', link: '#men', price: 45.00 },
-  { src: men2, title: 'Sports Shoes', category: 'Men', link: '#men', price: 60.25 },
-  { src: men3, title: 'Blue Shoes', category: 'Men', link: '#men', price: 32.99 },
-  { src: acc1, title: 'Engagement Ring', category: 'Accessories', link: '#accessories', price: 12.50 },
-  { src: acc2, title: 'Glasses', category: 'Accessories', link: '#accessories', price: 8.99 },
-  { src: acc3, title: 'Sports Cap', category: 'Accessories', link: '#accessories', price: 20.00 },
-  { src: acc4, title: ' Watch', category: 'Accessories', link: '#accessories', price: 5.75 },
+  { src: women1, title: 'Vestido Elegante', category: 'Mujer', link: '#mujer', price: 25.99 },
+  { src: women2, title: 'Blusa Casual', category: 'Mujer', link: '#mujer', price: 30.50 },
+  { src: women3, title: 'Pantalones Cortos de Verano', category: 'Mujer', link: '#mujer', price: 15.75 },
+  { src: men1, title: 'Jeans Clásicos', category: 'Hombre', link: '#hombre', price: 45.00 },
+  { src: men2, title: 'Zapatos Deportivos', category: 'Hombre', link: '#hombre', price: 60.25 },
+  { src: men3, title: 'Zapatos Azules', category: 'Hombre', link: '#hombre', price: 32.99 },
+  { src: acc1, title: 'Anillo de Compromiso', category: 'Accesorios', link: '#accesorios', price: 12.50 },
+  { src: acc2, title: 'Gafas', category: 'Accesorios', link: '#accesorios', price: 8.99 },
+  { src: acc3, title: 'Gorra Deportiva', category: 'Accesorios', link: '#accesorios', price: 20.00 },
+  { src: acc4, title: 'Reloj', category: 'Accesorios', link: '#accesorios', price: 5.75 },
 ];
 
 const ProducListPrincipal = () => {
   return (
     <div className="gallery">
-      <div className='featured'><h2>Featured products</h2></div>
+      <div className='featured'><h2>Productos Destacados</h2></div>
       <div className='seccion'>
         {images.map((image, index) => (
           <div className="item" key={index}>
@@ -49,22 +49,22 @@ const ProducListPrincipal = () => {
       <div className="icons">
         <div className='iconSeccion'>
           <img src={globeIcon} alt="" />
-          <h2>Worlide Shipping</h2>
+          <h2>Envío mundial</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
         <div className='iconSeccion'>
           <img src={mannequinIcon} alt="" />
-          <h2>Best Quality</h2>
+          <h2>Mejor calidad</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
         <div className='iconSeccion'>
           <img src={offerIcon} alt="" />
-          <h2>Best Offers</h2>
+          <h2>Mejores ofertas</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
         <div className='iconSeccion'>
           <img src={secureIcon} alt="" />
-          <h2>Secure Payment</h2>
+          <h2>Pago Seguro</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
       </div>

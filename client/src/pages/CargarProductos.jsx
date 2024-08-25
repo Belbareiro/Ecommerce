@@ -9,11 +9,12 @@ const CargarProductos = ({ actualizarListaProductos }) => {
     const [categoria, setCategoria] = useState("");
     const [imagen, setImagen] = useState(null);
     const [error, setError] = useState(null);
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false); // Estado para mensaje de éxito
 
     const navegacion = useNavigate();
 
     const enviarFormularioProducto = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Evitar el comportamiento por defecto del formulario
         const formData = new FormData();
         formData.append('nombre', nombre);
         formData.append('precio', precio);
@@ -22,21 +23,24 @@ const CargarProductos = ({ actualizarListaProductos }) => {
         formData.append('imagen', imagen);
 
         try {
-            const URL = "http://localhost:5000/api/products";
+            const URL = "http://localhost:5000/api/products"; // URL de la API
             const respuesta = await axios.post(URL, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
 
+            // Actualizar la lista de productos en el componente padre
             actualizarListaProductos(respuesta.data);
 
+            // Reiniciar campos del formulario
             setNombre("");
             setPrecio(0);
             setDescripcion("");
             setCategoria("");
             setImagen(null);
-            navegacion("/todosLosProductos"); //
+            setShowSuccessMessage(true); // Mostrar mensaje de éxito
+
         } catch (error) {
             console.log("Algo falló", error.response ? error.response.data : error.message);
             setError(error.response ? error.response.data.message : "Error de conexión");
@@ -47,33 +51,78 @@ const CargarProductos = ({ actualizarListaProductos }) => {
         <>
             <h2>Agregar nuevo Producto</h2>
 
+            {showSuccessMessage && (
+                <div>
+                    <p>¡Producto agregado exitosamente!</p>
+                </div>
+            )}
+
+            {error && (
+                <div>
+                    <p style={{ color: 'red' }}>{error}</p>
+                </div>
+            )}
+
             <form onSubmit={enviarFormularioProducto}>
                 <div>
                     <label htmlFor="nombre">Nombre:</label>
-                    <input type="text" id="nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
+                    <input
+                        type="text"
+                        id="nombre"
+                        value={nombre}
+                        onChange={(e) => setNombre(e.target.value)}
+                        required
+                    />
                 </div>
                 <div>
                     <label htmlFor="precio">Precio:</label>
-                    <input type="number" id="precio" value={precio} onChange={(e) => setPrecio(e.target.value)} required />
+                    <input
+                        type="number"
+                        id="precio"
+                        value={precio}
+                        onChange={(e) => setPrecio(e.target.value)}
+                        required
+                    />
                 </div>
                 <div>
                     <label htmlFor="descripcion">Descripción:</label>
-                    <input type="text" id="descripcion" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} required />
+                    <input
+                        type="text"
+                        id="descripcion"
+                        value={descripcion}
+                        onChange={(e) => setDescripcion(e.target.value)}
+                        required
+                    />
                 </div>
                 <div>
                     <label htmlFor="categoria">Categoría:</label>
-                    <select id="categoria" value={categoria} onChange={(e) => setCategoria(e.target.value)} required>
+                    <select
+                        id="categoria"
+                        value={categoria}
+                        onChange={(e) => setCategoria(e.target.value)}
+                        required
+                    >
                         <option value="">Selecciona una categoría</option>
-                        <option value="women">Mujer</option>
-                        <option value="men">Hombre</option>
-                        <option value="accessories">Accesorios</option>
+                        <option value="mujer">Mujer</option>
+                        <option value="hombre">Hombre</option>
+                        <option value="accesorios">Accesorios</option>
                     </select>
                 </div>
                 <div>
                     <label htmlFor="imagen">Imagen:</label>
-                    <input type="file" id="imagen" onChange={(e) => setImagen(e.target.files[0])} required />
+                    <input
+                        type="file"
+                        id="imagen"
+                        onChange={(e) => setImagen(e.target.files[0])}
+                        required
+                    />
                 </div>
-                <button type="submit">Agregar</button>
+                <div>
+                    <button type="submit">Agregar</button>
+                    <button type="button" onClick={() => navegacion("/todosLosProductos")}>
+                        Ver todos los productos
+                    </button>
+                </div>
             </form>
         </>
     );

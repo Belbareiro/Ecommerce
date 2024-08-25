@@ -6,36 +6,36 @@ const Footer = () => {
     return (
         <div className="footer">
             <div className="footer-top">
-                <span>SALE UP TO 70% OFF FOR ALL CLOTHES & FASHION ITEMS, ON ALL BRANDS.</span>
+                <span>OFERTA DE HASTA 70% DE DESCUENTO EN TODA LA ROPA Y ARTÍCULOS DE MODA, EN TODAS LAS MARCAS.</span>
             </div>
             <div className='footer-medio'>
                 <div>
                     <span>D'BCLAM</span>
-                    <p>The best look anytime, anywhere.</p>
+                    <p>El mejor look en cualquier momento y lugar.</p>
                 </div>
                 <div>
-                    <h2>For Her</h2>
+                    <h2><Link to="mujer">Para ella </Link></h2>
                     <ul>
-                        <li><Link to="women">Women Jeans</Link></li>
-                        <li><Link to="women">Tops and Shirts</Link></li>
-                        <li><Link to="women">Women Jackets</Link></li>
-                        <li><Link to="women">Women Accessories</Link></li>
+                        <li>Vaqueros de mujer</li>
+                        <li>Tops y camisas</li>
+                        <li>Chaquetas de mujer</li>
+                        <li>Accesorios para mujer</li>
                     </ul>
                 </div>
                 <div>
-                    <h2>For Her</h2>
+                    <h2> <Link to="hombre">For Her </Link></h2>
                     <ul>
-                        <li><Link to="men">Men Jeans</Link></li>
-                        <li><Link to="men">Men Shirts</Link></li>
-                        <li><Link to="men">Men Shoes</Link></li>
-                        <li><Link to="men">Men Accessories</Link></li>
+                        <li>Vaqueros de hombre</li>
+                        <li>Camisas de hombre</li>
+                        <li>Zapatos de hombre</li>
+                        <li>Accesorios para hombre</li>
                     </ul>
                 </div>
             </div>
             <div className="footer-bottom">
-                <p>Copyrigth © D'BCLAM, Powered by D'BCLAM </p>
+                <p>Copyrigth © D'BCLAM, desarrollado por D'BCLAM </p>
             </div>
-        </div>
+        </div >
     )
 }
 

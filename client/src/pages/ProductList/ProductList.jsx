@@ -1,23 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import '../ProductList/ProductList.css'
+import React from 'react';
+import '../ProductList/ProductList.css';
 
-const ProductList = () => {
-    const [productos, setProductos] = useState([]);
-
-    useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const response = await axios.get('http://localhost:5000/api/products');
-                setProductos(response.data);
-            } catch (error) {
-                console.error('Error al obtener los productos:', error);
-            }
-        };
-
-        fetchProducts();
-    }, []);
-
+const ProductList = ({ productos }) => {
     return (
         <div>
             <h2>Lista de Productos</h2>
@@ -30,7 +14,7 @@ const ProductList = () => {
                         return (
                             <div key={producto._id} className="product-card">
                                 <h3>{producto.nombre}</h3>
-                                <p>Precio: ${producto.precio}</p>
+                                <p>Precio: Gs {producto.precio}</p>
                                 <p>Descripción: {producto.descripcion}</p>
                                 <p>Categoría: {producto.categoria}</p>
                                 {/* Mostrar la imagen */}
