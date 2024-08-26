@@ -20,7 +20,7 @@ const ProductosPorCategoria = ({ onAddToCart }) => {
             }
         };
 
-        fetchProductos();
+        fetchProducts();
     }, [categoria]); // La dependencia es la categoría para volver a ejecutar el efecto si cambia
 
     return (
