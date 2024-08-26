@@ -9,6 +9,9 @@ const ProductosPorCategoria = ({ onAddToCart }) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+         // Desplazar hacia arriba cuando se cargue el componente
+        window.scrollTo(0, 0);
+        
         const fetchProducts = async () => {
             try {
                 const response = await axios.get(`http://localhost:5000/api/products/categoria/${categoria}`);
