@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import '../ProductosPorCategoria/ProductosPorCategoria.css'
-
+import '../ProductosPorCategoria/ProductosPorCategoria.css';
 
 const ProductosPorCategoria = ({ onAddToCart }) => {
     const { categoria } = useParams(); // Obtiene la categoría de la URL
@@ -10,17 +9,18 @@ const ProductosPorCategoria = ({ onAddToCart }) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchProductos = async () => {
+        const fetchProducts = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/products?categoria=${categoria}`);
+                const response = await axios.get('http://localhost:5000/api/products', {
+                    params: { categoria }
+                });
                 setProductos(response.data);
             } catch (error) {
                 console.error('Error al obtener los productos:', error);
                 setError('No se pudieron cargar los productos. Intenta de nuevo más tarde.');
             }
         };
-
-        fetchProductos();
+        fetchProducts();
     }, [categoria]);
 
     return (
