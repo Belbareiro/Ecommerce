@@ -8,11 +8,7 @@ const Header = () => {
             <h1>Lloviendo ofertas para<span>¡El verano caluroso!</span></h1>
             <p>25% de descuento en todos los productos</p>
             <button className="comprar-ahora-boton">
-                {/* Desplaza hasta el componente de ofertas */}
-                <a href="#contentOne">COMPRAR AHORA</a>
-            </button>
-            <button className="encontrar-mas-boton">
-                <Link to="/">ENCONTRAR MÁS</Link>
+                <Link to="/todosLosProductos">COMPRAR AHORA</Link>
             </button>
         </div>
     );
