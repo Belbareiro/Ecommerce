@@ -17,16 +17,16 @@ import secureIcon from '../assets/iconsProductListP/secureIcon.png'
 
 
 const images = [
-  { src: women1, title: 'Vestido Elegante', category: 'Mujer', link: '#mujer', price: 25.99 },
-  { src: women2, title: 'Blusa Casual', category: 'Mujer', link: '#mujer', price: 30.50 },
-  { src: women3, title: 'Pantalones Cortos de Verano', category: 'Mujer', link: '#mujer', price: 15.75 },
-  { src: men1, title: 'Jeans Clásicos', category: 'Hombre', link: '#hombre', price: 45.00 },
-  { src: men2, title: 'Zapatos Deportivos', category: 'Hombre', link: '#hombre', price: 60.25 },
-  { src: men3, title: 'Zapatos Azules', category: 'Hombre', link: '#hombre', price: 32.99 },
-  { src: acc1, title: 'Anillo de Compromiso', category: 'Accesorios', link: '#accesorios', price: 12.50 },
-  { src: acc2, title: 'Gafas', category: 'Accesorios', link: '#accesorios', price: 8.99 },
-  { src: acc3, title: 'Gorra Deportiva', category: 'Accesorios', link: '#accesorios', price: 20.00 },
-  { src: acc4, title: 'Reloj', category: 'Accesorios', link: '#accesorios', price: 5.75 },
+  { src: women1, title: 'Vestido Elegante', category: 'Mujer', link: 'categoria/mujer', price: 25 },
+  { src: women2, title: 'Blusa Casual', category: 'Mujer', link: 'categoria/mujer', price: 30 },
+  { src: women3, title: 'Pantalones Cortos de Verano', category: 'Mujer', link: 'categoria/mujer', price: 15 },
+  { src: men1, title: 'Jeans Clásicos', category: 'Hombre', link: 'categoria/hombre', price: 45 },
+  { src: men2, title: 'Zapatos Deportivos', category: 'Hombre', link: '#categoria/hombre', price: 60 },
+  { src: men3, title: 'Zapatos Azules', category: 'Hombre', link: '#categoria/hombre', price: 32 },
+  { src: acc1, title: 'Anillo de Compromiso', category: 'Accesorios', link: 'categoria/accesorios', price: 12 },
+  { src: acc2, title: 'Gafas', category: 'Accesorios', link: 'categoria/accesorios', price: 8 },
+  { src: acc3, title: 'Gorra Deportiva', category: 'Accesorios', link: 'categoria/accesorios', price: 20 },
+  { src: acc4, title: 'Reloj', category: 'Accesorios', link: 'categoria/accesorios', price: 5 },
 ];
 
 const ProducListPrincipal = () => {
@@ -40,7 +40,7 @@ const ProducListPrincipal = () => {
               <img src={image.src} alt={image.title} />
               <div className="title">{image.title}</div>
               <div className="price" >
-                ${image.price.toFixed(2)} {/* Formato de precio con dos decimales */} </div>
+                Gs {image.price.toFixed(2)} {/* Formato de precio con dos decimales */} </div>
               <div className="category">{image.category}</div>
             </a>
           </div>
