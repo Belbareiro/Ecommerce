@@ -1,5 +1,6 @@
 import React from 'react';
 import './AboutUs.css';
+import { link } from '../../../server/routes/products';
 
 const AboutUs = () => {
     return (

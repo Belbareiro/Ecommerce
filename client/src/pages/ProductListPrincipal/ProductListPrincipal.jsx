@@ -18,11 +18,11 @@ import secureIcon from '../assets/iconsProductListP/secureIcon.png'
 
 const images = [
   { src: women1, title: 'Vestido Elegante', category: 'Mujer', link: 'categoria/mujer', price: 25 },
-  { src: women2, title: 'Blusa Casual', category: 'Mujer', link: 'categoria/mujer', price: 30 },
+  { src: women2, title: 'Blusa Blanca', category: 'Mujer', link: 'categoria/mujer', price: 40 },
   { src: women3, title: 'Pantalones Cortos de Verano', category: 'Mujer', link: 'categoria/mujer', price: 15 },
-  { src: men1, title: 'Jeans Clásicos', category: 'Hombre', link: 'categoria/hombre', price: 45 },
-  { src: men2, title: 'Zapatos Deportivos', category: 'Hombre', link: '#categoria/hombre', price: 60 },
-  { src: men3, title: 'Zapatos Azules', category: 'Hombre', link: '#categoria/hombre', price: 32 },
+  { src: men1, title: 'Vaquero masculino', category: 'Hombre', link: 'categoria/hombre', price: 10 },
+  { src: men2, title: 'Zapato Elegante', category: 'Hombre', link: '#categoria/hombre', price: 15 },
+  { src: men3, title: 'Zapato Azul', category: 'Hombre', link: '#categoria/hombre', price: 10 },
   { src: acc1, title: 'Anillo de Compromiso', category: 'Accesorios', link: 'categoria/accesorios', price: 12 },
   { src: acc2, title: 'Gafas', category: 'Accesorios', link: 'categoria/accesorios', price: 8 },
   { src: acc3, title: 'Gorra Deportiva', category: 'Accesorios', link: 'categoria/accesorios', price: 20 },
