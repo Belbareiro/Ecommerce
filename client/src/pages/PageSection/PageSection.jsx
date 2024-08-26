@@ -6,7 +6,7 @@ import photo2 from '../assets/pageSection/photo2.jpg';
 import photo3 from '../assets/pageSection/photo3.jpg';
 import Header from '../../components/Header';
 import ProductListPrincipal from '../ProductListPrincipal/ProductListPrincipal';
-
+import { Link } from 'react-router-dom';
 
 const PageSection = () => {
   const photos = [
@@ -29,12 +29,14 @@ const PageSection = () => {
         {photos.map(photo => (
           <div className="photo" key={photo.id}>
             <img src={photo.src} alt={`Foto ${photo.id}`} />
-            <div className='containerTitle'> <h2 className="title">{photo.title}</h2></div>
+            <div className='containerTitle'> 
+               <h2 className="title">{photo.title}</h2>
+            </div>
             <p className="description">{photo.description}</p>
-            <button
-              className="button"
-            >
-              {photo.buttonText}
+            <button className="button">
+              <Link to="/todosLosProductos">
+                {photo.buttonText}
+              </Link>
             </button>
           </div>
         ))}
