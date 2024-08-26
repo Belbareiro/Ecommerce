@@ -14,4 +14,7 @@ router.put('/:id', productController.updateProduct);
 // Ruta para eliminar un producto específico por ID
 router.delete('/:id', productController.deleteProduct);
 
+// Ruta para obtener productos por categoría
+router.get('/categoria/:categoria', productController.getProductsByCategory);
+
 module.exports = router;

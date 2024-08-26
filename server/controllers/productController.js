@@ -2,7 +2,6 @@ const Product = require('../models/Product');
 const multer = require('multer');
 const path = require('path');
 
-
 // Configuración de Multer para manejar la subida de archivos
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -16,7 +15,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Crear un nuevo producto
-exports.createProduct = async (req, res) => {
+const createProduct = async (req, res) => {
     try {
         const { nombre, precio, descripcion, categoria } = req.body;
         const imagen = req.file.filename; // Obtener la ruta de la imagen
@@ -30,7 +29,7 @@ exports.createProduct = async (req, res) => {
 };
 
 // Obtener todos los productos
-exports.getAllProducts = async (req, res) => {
+const getAllProducts = async (req, res) => {
     try {
         const products = await Product.find();
         res.status(200).json(products);
@@ -40,8 +39,8 @@ exports.getAllProducts = async (req, res) => {
     }
 };
 
-// Otras funciones para actualizar y eliminar productos
-exports.updateProduct = async (req, res) => {
+// Actualizar un producto específico por ID
+const updateProduct = async (req, res) => {
     try {
         const { nombre, precio, descripcion, categoria } = req.body;
         const updatedProduct = await Product.findByIdAndUpdate(
@@ -60,7 +59,7 @@ exports.updateProduct = async (req, res) => {
 };
 
 // Eliminar un producto específico por ID
-exports.deleteProduct = async (req, res) => {
+const deleteProduct = async (req, res) => {
     try {
         const deletedProduct = await Product.findByIdAndDelete(req.params.id);
         if (!deletedProduct) {
@@ -73,5 +72,24 @@ exports.deleteProduct = async (req, res) => {
     }
 };
 
-// Exportar el middleware de Multer para su uso en las rutas
-exports.upload = upload;
+// Obtener productos por categoría
+const getProductsByCategory = async (req, res) => {
+    const { categoria } = req.params; // Obtiene la categoría de la URL
+    try {
+        const productos = await Product.find({ categoria }); // Filtra los productos por categoría
+        res.status(200).json(productos);
+    } catch (error) {
+        console.error('Error al obtener los productos:', error);
+        res.status(500).json({ message: error.message });
+    }
+};
+
+// Exportar el middleware de Multer y las funciones
+module.exports = {
+    upload,
+    createProduct,
+    getAllProducts,
+    getProductsByCategory,
+    updateProduct,
+    deleteProduct
+};

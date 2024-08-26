@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import '../ProductosPorCategoria/ProductosPorCategoria.css'
-
+import '../ProductosPorCategoria/ProductosPorCategoria.css';
 
 const ProductosPorCategoria = ({ onAddToCart }) => {
     const { categoria } = useParams(); // Obtiene la categoría de la URL
@@ -12,7 +11,7 @@ const ProductosPorCategoria = ({ onAddToCart }) => {
     useEffect(() => {
         const fetchProductos = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/products?categoria=${categoria}`);
+                const response = await axios.get(`http://localhost:5000/api/products/categoria/${categoria}`);
                 setProductos(response.data);
             } catch (error) {
                 console.error('Error al obtener los productos:', error);
@@ -21,7 +20,7 @@ const ProductosPorCategoria = ({ onAddToCart }) => {
         };
 
         fetchProductos();
-    }, [categoria]);
+    }, [categoria]); // La dependencia es la categoría para volver a ejecutar el efecto si cambia
 
     return (
         <div className="productos-por-categoria">
