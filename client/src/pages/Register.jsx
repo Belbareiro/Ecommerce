@@ -1,26 +1,28 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Register.css'; 
+import axios from 'axios';
+import './Register.css'; // Asegúrate de que el archivo CSS esté presente para el estilo
 
 const Register = () => {
-    const [companyName, setCompanyName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [companyName, setCompanyName] = useState('');
     const navigate = useNavigate();
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        // Aquí iría la lógica para registrar al usuario
-        console.log('Nombre de la empresa:', companyName);
-        console.log('Correo:', email);
-        console.log('Contraseña:', password);
-        // Redirige al usuario después del registro exitoso
-        navigate('/');
+        try {
+            await axios.post('http://localhost:5002/api/auth/register', { companyName, email, password });
+            navigate('/login'); // Redirige a la página de inicio de sesión
+        } catch (error) {
+            console.error('Error al registrarse:', error);
+            alert('Error en el registro, por favor intente de nuevo.');
+        }
     };
 
     return (
         <div className="register-container">
-            <h2>Registro de Vendedores</h2>
+            <h2>Registrarse</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="companyName">Nombre de la empresa:</label>
@@ -52,7 +54,7 @@ const Register = () => {
                         required
                     />
                 </div>
-                <button type="submit" className="register-btn">Registrar</button>
+                <button type="submit">Registrarse</button>
             </form>
         </div>
     );
