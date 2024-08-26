@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './TodosLosProductos.css'; // Asegúrate de tener esta hoja de estilos
+import './TodosLosProductos.css';
 
 const TodosLosProductos = ({ onAddToCart }) => {
     const [productos, setProductos] = useState([]);
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        // Desplazar hacia arriba cuando se cargue el componente
+        window.scrollTo(0, 0);
+
         const fetchProductos = async () => {
             try {
                 const response = await axios.get('http://localhost:5000/api/products');
