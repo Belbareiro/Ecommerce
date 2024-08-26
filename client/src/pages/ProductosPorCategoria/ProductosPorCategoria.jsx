@@ -9,9 +9,10 @@ const ProductosPorCategoria = ({ onAddToCart }) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchProductos = async () => {
+        const fetchProducts = async () => {
             try {
                 const response = await axios.get(`http://localhost:5000/api/products/categoria/${categoria}`);
+
                 setProductos(response.data);
             } catch (error) {
                 console.error('Error al obtener los productos:', error);
@@ -33,7 +34,7 @@ const ProductosPorCategoria = ({ onAddToCart }) => {
                         <div key={producto._id} className="producto-card">
                             <img src={`http://localhost:5000/uploads/${producto.imagen}`} alt={producto.nombre} />
                             <h3>{producto.nombre}</h3>
-                            <p>Precio: Gs {producto.precio}</p>
+                            <p>Precio: {producto.precio} Gs.</p>
                             <p>{producto.descripcion}</p>
                             <p>Categoría: {producto.categoria}</p>
                             <button onClick={() => onAddToCart(producto)}>Añadir al carrito</button>

@@ -13,10 +13,8 @@ import Carrito from './pages/Carrito/Carrito';
 
 const App = () => {
   const [cartCount, setCartCount] = useState(0);
-  const [itemsCarrito, setItemsCarrito] = useState(() => {
-    const savedCart = localStorage.getItem('cartItems');
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+  const [itemsCarrito, setItemsCarrito] = useState([]);
+  const [listaDeProductosPrincipales, setListaDeProductosPrincipales] = useState([]);
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
@@ -28,7 +26,6 @@ const App = () => {
         console.error('Error al obtener los productos:', error);
       }
     };
-
     fetchProducts();
   }, []);
 
@@ -40,7 +37,6 @@ const App = () => {
   const handleAddToCart = (producto) => {
     setItemsCarrito((prevItems) => {
       const existingItem = prevItems.find(item => item._id === producto._id);
-
       if (existingItem) {
         return prevItems.map(item =>
           item._id === producto._id
@@ -57,9 +53,18 @@ const App = () => {
     setCartCount(0);
   };
 
-  const agregarProducto = (nuevoProducto) => {
-    setProductos((prevProductos) => [...prevProductos, nuevoProducto]);
-  };
+  useEffect(() => {
+    const obtenerListaDeProductosPrincipales = async () => {
+      const URL = "http://localhost:5000/api/products";
+      try {
+        const respuesta = await axios.get(URL);
+        setListaDeProductosPrincipales(respuesta.data);
+      } catch (error) {
+        console.error('Error al obtener los productos principales:', error);
+      }
+    };
+    obtenerListaDeProductosPrincipales();
+  }, []);
 
   return (
     <div>
@@ -68,9 +73,11 @@ const App = () => {
         <Route path="/" element={<Products productos={productos} onAddToCart={handleAddToCart} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/admin" element={<AdminPage agregarProducto={agregarProducto} />} />
-        <Route path="/todosLosProductos" element={<TodosLosProductos productos={productos} onAddToCart={handleAddToCart} />} />
-        <Route path="/categoria/:categoria" element={<ProductosPorCategoria productos={productos} onAddToCart={handleAddToCart} />} />
+        <Route path="/admin" element={<AdminPage />} />
+        {/* Asegúrate de que este componente esté correctamente importado */}
+        {/* <Route path="/listaPrincipal" element={<ProducListPrincipal listaDeProductosPrincipales={listaDeProductosPrincipales} />} /> */}
+        <Route path="/todosLosProductos" element={<TodosLosProductos onAddToCart={handleAddToCart} />} />
+        <Route path="/categoria/:categoria" element={<ProductosPorCategoria onAddToCart={handleAddToCart} />} />
         <Route path="/carrito" element={<Carrito itemsCarrito={itemsCarrito} completarCompra={handleCompletePurchase} />} />
       </Routes>
       <Footer />
