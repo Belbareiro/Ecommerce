@@ -14,7 +14,7 @@ const Footer = () => {
                     <p>El mejor look en cualquier momento y lugar.</p>
                 </div>
                 <div>
-                    <h2><Link to="mujer">Para ella </Link></h2>
+                    <h2><Link to="/categoria/mujer">Para ella</Link></h2>
                     <ul>
                         <li>Vaqueros de mujer</li>
                         <li>Tops y camisas</li>
@@ -23,7 +23,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div>
-                    <h2> <Link to="hombre">Para el </Link></h2>
+                    <h2> <Link to="/categoria/hombre">Para él</Link></h2>
                     <ul>
                         <li>Vaqueros de hombre</li>
                         <li>Camisas de hombre</li>
