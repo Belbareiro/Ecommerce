@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+/*import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 
 const Producto = (props) => {
@@ -32,4 +32,4 @@ const Producto = (props) => {
     );
 }
 
-export default Producto;
+export default Producto;*/

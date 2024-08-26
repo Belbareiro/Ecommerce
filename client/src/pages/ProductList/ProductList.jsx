@@ -1,3 +1,4 @@
+//boton de eliminar y editar
 import React from 'react';
 import '../ProductList/ProductList.css';
 
