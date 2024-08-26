@@ -2,11 +2,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const productRoutes = require('./routes/products');
 const path = require('path');
+const productRoutes = require('./routes/products'); // Rutas para los productos
+const authRoutes = require('./routes/auth'); // Rutas para la autenticación
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5002;
 
 // Middleware
 app.use(cors());
@@ -19,11 +20,13 @@ const mongoURI = 'mongodb://localhost:27017/myfashionstore'; // Cambia esto seg�
 // Conectar a MongoDB
 mongoose.connect(mongoURI)
     .then(() => console.log('MongoDB conectado'))
-    .catch(err => console.error(err));
+    .catch(err => console.error('Error al conectar a MongoDB:', err));
 
 // Rutas
-app.use('/api/products', productRoutes);
+app.use('/api/products', productRoutes); // Maneja las rutas de productos
+app.use('/api/auth', authRoutes); // Maneja las rutas de autenticación
 
+// Manejo de errores para rutas no encontradas
 app.use((req, res, next) => {
     res.status(404).json({ message: 'Ruta no encontrada' });
 });
