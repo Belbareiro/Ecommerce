@@ -41,18 +41,22 @@ const getAllProducts = async (req, res) => {
     }
 };
 
-// Actualizar un producto específico por ID
+// Función para actualizar un producto
 const updateProduct = async (req, res) => {
+    const productId = req.params.id; // Obtener el ID del producto de los parámetros de la solicitud
+    const { nombre, precio, descripcion, categoria } = req.body; // Obtener los datos del producto de la solicitud
+
     try {
-        const { nombre, precio, descripcion, categoria } = req.body;
         const updatedProduct = await Product.findByIdAndUpdate(
-            req.params.id,
-            { nombre, precio, descripcion, categoria },
+            productId,
+            { nombre, precio, descripcion, categoria, imagen: req.file ? req.file.path : undefined },
             { new: true }
         );
+
         if (!updatedProduct) {
             return res.status(404).json({ message: 'Producto no encontrado' });
         }
+
         res.status(200).json(updatedProduct);
     } catch (error) {
         console.error('Error al actualizar el producto:', error);
@@ -60,17 +64,22 @@ const updateProduct = async (req, res) => {
     }
 };
 
-// Eliminar un producto específico por ID
 const deleteProduct = async (req, res) => {
+    const productId = req.params.id; // Asegúrate de que estás usando 'id'
+
     try {
-        const deletedProduct = await Product.findByIdAndDelete(req.params.id);
-        if (!deletedProduct) {
-            return res.status(404).json({ message: 'Producto no encontrado' });
+        const producto = await Product.findById(productId);
+
+        if (!producto) {
+            return res.status(404).send({ message: 'Producto no encontrado' });
         }
-        res.status(200).json({ message: 'Producto eliminado' });
+
+        await Product.findByIdAndDelete(productId); // Esto elimina el producto directamente
+
+        res.status(200).send({ message: 'Producto eliminado' });
     } catch (error) {
         console.error('Error al eliminar el producto:', error);
-        res.status(500).json({ message: error.message });
+        res.status(500).send({ message: 'Error al eliminar el producto' });
     }
 };
 

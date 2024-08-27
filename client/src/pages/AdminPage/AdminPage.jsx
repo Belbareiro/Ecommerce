@@ -10,6 +10,7 @@ const AdminPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [companyName, setCompanyName] = useState('');
+    const [productoEditado, setProductoEditado] = useState(null);
 
     useEffect(() => {
         const checkAuth = async () => {
@@ -60,14 +61,34 @@ const AdminPage = () => {
         }
     };
 
+    // Función para actualizar la lista de productos
     const actualizarListaProductos = (nuevoProducto) => {
         setProductos((prevProductos) => [...prevProductos, nuevoProducto]);
     };
 
-    const eliminarProductoDeLaLista = (productoId) => {
-        setProductos((prevProductos) => prevProductos.filter(producto => producto._id !== productoId));
+    // Función para eliminar un producto
+    const eliminarProductoDeLaLista = async (productoId) => {
+        try {
+            await axios.delete(`http://localhost:5000/api/products/${productoId}`); // Ajusta la URL según tu API
+            setProductos((prevProductos) => prevProductos.filter(producto => producto._id !== productoId));
+        } catch (error) {
+            console.error("Error al eliminar el producto:", error);
+        }
     };
 
+    const editarProducto = async (productoId, updatedData) => {
+        try {
+            const response = await axios.put(`http://localhost:5000/api/products/${productoId}`, updatedData); // Ajusta la URL según tu API
+            setProductos((prevProductos) =>
+                prevProductos.map(producto =>
+                    producto._id === productoId ? response.data : producto
+                )
+            );
+            setProductoEditado(null); // Resetea el estado de edición
+        } catch (error) {
+            console.error("Error al editar el producto:", error);
+        }
+    };
     return (
         <div>
             <h1>Página de Administrador</h1>
@@ -105,8 +126,74 @@ const AdminPage = () => {
             ) : (
                 <div>
                     <CargarProductos actualizarListaProductos={actualizarListaProductos} />
-                    <ProductList productos={productos} eliminarProductoDeLaLista={eliminarProductoDeLaLista} />
+                    <ProductList
+                        productos={productos}
+                        eliminarProductoDeLaLista={eliminarProductoDeLaLista}
+                        setProductoEditado={setProductoEditado}
+                    />
+                    {productoEditado && (
+                        <form onSubmit={(e) => {
+                            e.preventDefault();
+                            editarProducto(productoEditado._id, {
+                                nombre: productoEditado.nombre,
+                                precio: productoEditado.precio,
+                                descripcion: productoEditado.descripcion,
+                                categoria: productoEditado.categoria,
+                                imagen: productoEditado.imagen
+                            });
+                        }}>
+                            <h2>Editar Producto</h2>
+                            <div>
+                                <label>Nombre:</label>
+                                <input
+                                    type="text"
+                                    value={productoEditado.nombre}
+                                    onChange={(e) => setProductoEditado({ ...productoEditado, nombre: e.target.value })}
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label>Precio:</label>
+                                <input
+                                    type="number"
+                                    value={productoEditado.precio}
+                                    onChange={(e) => setProductoEditado({ ...productoEditado, precio: e.target.value })}
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label>Descripción:</label>
+                                <input
+                                    type="text"
+                                    value={productoEditado.descripcion}
+                                    onChange={(e) => setProductoEditado({ ...productoEditado, descripcion: e.target.value })}
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label>Categoría:</label>
+                                <select
+                                    value={productoEditado.categoria}
+                                    onChange={(e) => setProductoEditado({ ...productoEditado, categoria: e.target.value })}
+                                    required
+                                >
+                                    <option value="mujer">Mujer</option>
+                                    <option value="hombre">Hombre</option>
+                                    <option value="accesorios">Accesorios</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Imagen:</label>
+                                <input
+                                    type="file"
+                                    onChange={(e) => setProductoEditado({ ...productoEditado, imagen: e.target.files[0] })}
+                                />
+                            </div>
+                            <button type="submit">Guardar Cambios</button>
+                        </form>
+                    )}
                 </div>
+
             )}
         </div>
     );
