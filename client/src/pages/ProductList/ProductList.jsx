@@ -3,24 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './ProductList.css';
 
-const ProductList = ({ productos, eliminarProductoDeLaLista }) => {
-    const navigate = useNavigate();
-
-    const eliminarProducto = async (productoId) => {
-        const URL = `http://localhost:5000/api/products/eliminar/${productoId}`;
-        try {
-            await axios.delete(URL);
-            eliminarProductoDeLaLista(productoId);
-        } catch (error) {
-            console.error('Error al eliminar el producto:', error);
-            alert('Error al eliminar el producto. Intente de nuevo.');
-        }
-    };
-
-    const editarProducto = (productoId) => {
-        navigate(`/admin/${productoId}`);
-    };
-
+const ProductList = ({ productos, eliminarProductoDeLaLista, setProductoEditado }) => {
     return (
         <div>
             <h2>Lista de Productos</h2>
@@ -33,8 +16,8 @@ const ProductList = ({ productos, eliminarProductoDeLaLista }) => {
                             <p>Descripción: {producto.descripcion}</p>
                             <p>Categoría: {producto.categoria}</p>
                             <img src={`http://localhost:5000/uploads/${producto.imagen}`} alt={producto.nombre} />
-                            <button onClick={() => eliminarProducto(producto._id)}>Eliminar</button>
-                            <button onClick={() => editarProducto(producto._id)}>Editar</button>
+                            <button onClick={() => eliminarProductoDeLaLista(producto._id)}>Eliminar</button>
+                            <button onClick={() => setProductoEditado(producto)}>Editar</button>
                         </div>
                     ))
                 ) : (

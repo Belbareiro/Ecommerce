@@ -32,7 +32,7 @@ const App = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http:/localhost:5000/api/products');
+        const response = await axios.get('http://localhost:5000/api/products');
         setProductos(response.data);
       } catch (error) {
         console.error('Error al obtener los productos:', error);
@@ -78,12 +78,12 @@ const App = () => {
         <Route path="/" element={<Products productos={productos} onAddToCart={handleAddToCart} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/admin" element={<AdminPage 
-         actualizarListaProductos={actualizarListaProductos}/>} />
+        <Route path="/admin" element={<AdminPage
+          actualizarListaProductos={actualizarListaProductos} />} />
         <Route path="/todosLosProductos" element={<TodosLosProductos onAddToCart={handleAddToCart} />} />
         <Route path="/categoria/:categoria" element={<ProductosPorCategoria onAddToCart={handleAddToCart} />} />
         <Route path="/carrito" element={<Carrito itemsCarrito={itemsCarrito} completarCompra={handleCompletePurchase} />} />
-        
+
       </Routes>
       <Footer />
     </div>
