@@ -47,6 +47,22 @@ const CargarProductos = ({ actualizarListaProductos }) => {
         }
     }
 
+    
+   // const enviarEdicion = async (e) => {
+      //  e.preventDefault();
+       // try {
+           // const updatedProducto = { nombre, precio,descripcion,categoria,imagen };
+          //  await axios.put(`http://localhost:8080/api/products/actualizar/${_id}`, updatedProducto);
+           // navegacion("/admin");  
+       //} catch (error) {
+          //  console.error('Error al editar el Producto:', error);
+       // }
+    //};
+
+    //if (loading) {
+        //return <p>Cargando...</p>;
+    //}
+
     return (
         <>
             <h2>Agregar nuevo Producto</h2>
@@ -122,6 +138,7 @@ const CargarProductos = ({ actualizarListaProductos }) => {
                     <button type="button" onClick={() => navegacion("/todosLosProductos")}>
                         Ver todos los productos
                     </button>
+                 {/*  <button type='submit'>Terminar Edicion</button>*/}
                 </div>
             </form>
         </>

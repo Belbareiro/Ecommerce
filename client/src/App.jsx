@@ -17,6 +17,16 @@ const App = () => {
   const [listaDeProductosPrincipales, setListaDeProductosPrincipales] = useState([]);
   const [productos, setProductos] = useState([]);
 
+  const actualizarListaProductos = (nuevoProducto) => {
+    setListaDeProductosPrincipales((previaLista) => [...previaLista, nuevoProducto]);
+  };
+
+  const eliminarProductosDeLaLista = (_id) => {
+    setListaDeProductosPrincipales((previaLista) =>
+      previaLista.filter((producto) => producto._id !== _id)
+    );
+  };
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -73,9 +83,8 @@ const App = () => {
         <Route path="/" element={<Products productos={productos} onAddToCart={handleAddToCart} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/admin" element={<AdminPage />} />
-        {/* Asegúrate de que este componente esté correctamente importado */}
-        {/* <Route path="/listaPrincipal" element={<ProducListPrincipal listaDeProductosPrincipales={listaDeProductosPrincipales} />} /> */}
+        <Route path="/admin" element={<AdminPage 
+         actualizarListaProductos={actualizarListaProductos}/>} />
         <Route path="/todosLosProductos" element={<TodosLosProductos onAddToCart={handleAddToCart} />} />
         <Route path="/categoria/:categoria" element={<ProductosPorCategoria onAddToCart={handleAddToCart} />} />
         <Route path="/carrito" element={<Carrito itemsCarrito={itemsCarrito} completarCompra={handleCompletePurchase} />} />

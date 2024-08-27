@@ -1,48 +1,71 @@
 import React from 'react';
 import '../ProductListPrincipal/ProductListPrincipal.css'
-import women1 from '../assets/women/women1.jpg';
-import women2 from '../assets/women/women2.jpg';
-import women3 from '../assets/women/women3.jpg';
-import men1 from '../assets/men/men1.jpg';
-import men2 from '../assets/men/men2.jpg';
-import men3 from '../assets/men/men3.jpg';
-import acc1 from '../assets/accessories/acc1.png';
-import acc2 from '../assets/accessories/acc2.jpg';
-import acc3 from '../assets/accessories/acc3.jpg';
-import acc4 from '../assets/accessories/acc4.jpg';
 import globeIcon from '../assets/iconsProductListP/globeIcon.png';
 import mannequinIcon from '../assets/iconsProductListP/mannequinIcon.png';
 import offerIcon from '../assets/iconsProductListP/offerIcon.png';
 import secureIcon from '../assets/iconsProductListP/secureIcon.png'
 
 
-const images = [
-  { src: women1, title: 'Vestido Elegante', category: 'Mujer', link: '#mujer', price: 25.99 },
-  { src: women2, title: 'Blusa Casual', category: 'Mujer', link: '#mujer', price: 30.50 },
-  { src: women3, title: 'Pantalones Cortos de Verano', category: 'Mujer', link: '#mujer', price: 15.75 },
-  { src: men1, title: 'Jeans Clásicos', category: 'Hombre', link: '#hombre', price: 45.00 },
-  { src: men2, title: 'Zapatos Deportivos', category: 'Hombre', link: '#hombre', price: 60.25 },
-  { src: men3, title: 'Zapatos Azules', category: 'Hombre', link: '#hombre', price: 32.99 },
-  { src: acc1, title: 'Anillo de Compromiso', category: 'Accesorios', link: '#accesorios', price: 12.50 },
-  { src: acc2, title: 'Gafas', category: 'Accesorios', link: '#accesorios', price: 8.99 },
-  { src: acc3, title: 'Gorra Deportiva', category: 'Accesorios', link: '#accesorios', price: 20.00 },
-  { src: acc4, title: 'Reloj', category: 'Accesorios', link: '#accesorios', price: 5.75 },
-];
+  const [productos, setProductos] = useState([]);  
+  const [loading, setLoading] = useState(true);  
+  const [error, setError] = useState(null); 
+
+  useEffect(() => {  
+    const fetchProducts = async () => {  
+      try {  
+        const response = await fetch('http://localhost:5000/api/products/');  
+
+        if (!response.ok) {  
+          throw new Error('Error al cargar los productos');   
+        }  
+        const data = await response.json();  
+        setProductos(data); 
+      } catch (error) {  
+        setError(error.message);   
+      } finally {  
+        setLoading(false); 
+      }  
+    };  
+  
+    fetchProducts();  
+  }, []); 
+
+  if (loading) {  
+    return <div>Cargando productos...</div>; 
+  }  
+
+  if (error) {  
+    return <div>Error: {error}</div>; 
+  }  
+
+  const productosFiltrados = productos.reduce((acc, producto) => {
+    if (!acc[producto.categoria]) {
+      acc[producto.categoria] = [];
+    }
+    if (acc[producto.categoria].length < 4) {
+      acc[producto.categoria].push(producto);
+    }
+    return acc;
+  }, {});
+
 
 const ProducListPrincipal = () => {
   return (
     <div className="gallery">
       <div className='featured'><h2>Productos Destacados</h2></div>
       <div className='seccion'>
-        {images.map((image, index) => (
-          <div className="item" key={index}>
-            <a href={image.link}>
-              <img src={image.src} alt={image.title} />
-              <div className="title">{image.title}</div>
-              <div className="price" >
-                ${image.price.toFixed(2)} {/* Formato de precio con dos decimales */} </div>
-              <div className="category">{image.category}</div>
-            </a>
+        {Object.keys(productosFiltrados).map((categoria) => (
+          <div key={categoria} className="seccion">
+            <h3>{categoria}</h3>
+            {productosFiltrados[categoria].map((producto) => (
+              <div key={producto._id} className="producto-card">
+                <img src={`http://localhost:5000/uploads/${producto.imagen}`} alt={producto.nombre} onError={(e) => { e.target.onerror = null; e.target.src = 'ruta/a/imagen/placeholder.jpg'; }} />
+                <h3>{producto.nombre}</h3>
+                <p>Precio: ${producto.precio.toFixed(2)} Gs.</p>
+                <p>{producto.descripcion}</p>
+                <p>Categoría: {producto.categoria}</p>
+              </div>
+            ))}
           </div>
         ))}
       </div>
@@ -50,22 +73,22 @@ const ProducListPrincipal = () => {
         <div className='iconSeccion'>
           <img src={globeIcon} alt="" />
           <h2>Envío mundial</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p>Realizamos envíos a todas partes del mundo, para que puedas recibir tu pedido sin importar la distancia</p>
         </div>
         <div className='iconSeccion'>
           <img src={mannequinIcon} alt="" />
           <h2>Mejor calidad</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p>Seleccionamos productos de alta calidad para garantizar tu satisfacción y la durabilidad de cada compra.</p>
         </div>
         <div className='iconSeccion'>
           <img src={offerIcon} alt="" />
           <h2>Mejores ofertas</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p>Ofrecemos promociones y descuentos especiales para que consigas los productos que amas a precios increíbles.</p>
         </div>
         <div className='iconSeccion'>
           <img src={secureIcon} alt="" />
           <h2>Pago Seguro</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p>Tu seguridad es nuestra prioridad. Utilizamos métodos de pago seguros y protegemos toda tu información personal.</p>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import CargarProductos from '../CargarProductos';
 import ProductList from '../ProductList/ProductList';
 import axios from 'axios';
 
-const AdminPage = () => {
+const AdminPage = (props) => {
     const [productos, setProductos] = useState([]);
 
     useEffect(() => {
