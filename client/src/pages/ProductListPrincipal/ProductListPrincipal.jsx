@@ -6,7 +6,6 @@ import offerIcon from '../assets/iconsProductListP/offerIcon.png';
 import secureIcon from '../assets/iconsProductListP/secureIcon.png'
 
 
-<<<<<<< HEAD
   const [productos, setProductos] = useState([]);  
   const [loading, setLoading] = useState(true);  
   const [error, setError] = useState(null); 
@@ -49,27 +48,12 @@ import secureIcon from '../assets/iconsProductListP/secureIcon.png'
     return acc;
   }, {});
 
-=======
-const images = [
-  { src: women1, title: 'Vestido Elegante', category: 'Mujer', link: 'categoria/mujer', price: 25 },
-  { src: women2, title: 'Blusa Blanca', category: 'Mujer', link: 'categoria/mujer', price: 40 },
-  { src: women3, title: 'Pantalones Cortos de Verano', category: 'Mujer', link: 'categoria/mujer', price: 15 },
-  { src: men1, title: 'Vaquero masculino', category: 'Hombre', link: 'categoria/hombre', price: 10 },
-  { src: men2, title: 'Zapato Elegante', category: 'Hombre', link: '#categoria/hombre', price: 15 },
-  { src: men3, title: 'Zapato Azul', category: 'Hombre', link: '#categoria/hombre', price: 10 },
-  { src: acc1, title: 'Anillo de Compromiso', category: 'Accesorios', link: 'categoria/accesorios', price: 12 },
-  { src: acc2, title: 'Gafas', category: 'Accesorios', link: 'categoria/accesorios', price: 8 },
-  { src: acc3, title: 'Gorra Deportiva', category: 'Accesorios', link: 'categoria/accesorios', price: 20 },
-  { src: acc4, title: 'Reloj', category: 'Accesorios', link: 'categoria/accesorios', price: 5 },
-];
->>>>>>> 99c299db87aa785626a32fd6f293dbed27a44e6b
 
 const ProducListPrincipal = () => {
   return (
     <div className="gallery">
       <div className='featured'><h2>Productos Destacados</h2></div>
       <div className='seccion'>
-<<<<<<< HEAD
         {Object.keys(productosFiltrados).map((categoria) => (
           <div key={categoria} className="seccion">
             <h3>{categoria}</h3>
@@ -82,17 +66,6 @@ const ProducListPrincipal = () => {
                 <p>Categoría: {producto.categoria}</p>
               </div>
             ))}
-=======
-        {images.map((image, index) => (
-          <div className="item" key={index}>
-            <a href={image.link}>
-              <img src={image.src} alt={image.title} />
-              <div className="title">{image.title}</div>
-              <div className="price" >
-                Gs {image.price.toFixed(2)} {/* Formato de precio con dos decimales */} </div>
-              <div className="category">{image.category}</div>
-            </a>
->>>>>>> 99c299db87aa785626a32fd6f293dbed27a44e6b
           </div>
         ))}
       </div>
