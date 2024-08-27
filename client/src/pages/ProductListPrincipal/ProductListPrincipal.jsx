@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '../ProductListPrincipal/ProductListPrincipal.css';
 import globeIcon from '../assets/iconsProductListP/globeIcon.png';
 import mannequinIcon from '../assets/iconsProductListP/mannequinIcon.png';
@@ -54,6 +55,9 @@ const ProducListPrincipal = () => {
       <div className='seccionUno'>
         {Object.keys(productosFiltrados).map((categoria) => (
           <div key={categoria} className="seccion">
+            <Link to={`/categoria/${categoria}`}>
+              <h3>{categoria}</h3>
+            </Link>
             {productosFiltrados[categoria].map((producto) => (
               <div key={producto._id} className="producto-card">
                 <img src={`http://localhost:5000/uploads/${producto.imagen}`} alt={producto.nombre} onError={(e) => { e.target.onerror = null; e.target.src = 'ruta/a/imagen/placeholder.jpg'; }} />

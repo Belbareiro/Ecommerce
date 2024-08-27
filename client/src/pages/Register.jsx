@@ -12,7 +12,7 @@ const Register = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.post('http://localhost:5002/api/auth/register', { companyName, email, password });
+            await axios.post('http://localhost:5000/api/auth/register', { companyName, email, password });
             navigate('/login'); // Redirige a la página de inicio de sesión
         } catch (error) {
             console.error('Error al registrarse:', error);

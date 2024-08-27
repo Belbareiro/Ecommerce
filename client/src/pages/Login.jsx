@@ -11,7 +11,7 @@ const Login = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5002/api/auth/login', { email, password });
+            const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
             localStorage.setItem('authToken', response.data.token);
             navigate('/admin'); // Redirige a la página de administración
         } catch (error) {
