@@ -4,8 +4,6 @@ import axios from 'axios';
 import Products from './pages/PageSection/PageSection';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Login from './pages/Login';
-import Register from './pages/Register';
 import AdminPage from './pages/AdminPage/AdminPage';
 import TodosLosProductos from './pages/TodosLosProductos/TodosLosProductos';
 import ProductosPorCategoria from './pages/ProductosPorCategoria/ProductosPorCategoria';
@@ -13,8 +11,10 @@ import Carrito from './pages/Carrito/Carrito';
 
 const App = () => {
   const [cartCount, setCartCount] = useState(0);
-  const [itemsCarrito, setItemsCarrito] = useState([]);
-  const [listaDeProductosPrincipales, setListaDeProductosPrincipales] = useState([]);
+  const [itemsCarrito, setItemsCarrito] = useState(() => {
+    const savedCart = localStorage.getItem('cartItems');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
   const [productos, setProductos] = useState([]);
 
   const actualizarListaProductos = (nuevoProducto) => {
@@ -36,6 +36,7 @@ const App = () => {
         console.error('Error al obtener los productos:', error);
       }
     };
+
     fetchProducts();
   }, []);
 
@@ -47,6 +48,7 @@ const App = () => {
   const handleAddToCart = (producto) => {
     setItemsCarrito((prevItems) => {
       const existingItem = prevItems.find(item => item._id === producto._id);
+
       if (existingItem) {
         return prevItems.map(item =>
           item._id === producto._id
@@ -63,18 +65,9 @@ const App = () => {
     setCartCount(0);
   };
 
-  useEffect(() => {
-    const obtenerListaDeProductosPrincipales = async () => {
-      const URL = "http://localhost:5000/api/products";
-      try {
-        const respuesta = await axios.get(URL);
-        setListaDeProductosPrincipales(respuesta.data);
-      } catch (error) {
-        console.error('Error al obtener los productos principales:', error);
-      }
-    };
-    obtenerListaDeProductosPrincipales();
-  }, []);
+  const agregarProducto = (nuevoProducto) => {
+    setProductos((prevProductos) => [...prevProductos, nuevoProducto]);
+  };
 
   return (
     <div>
@@ -88,6 +81,7 @@ const App = () => {
         <Route path="/todosLosProductos" element={<TodosLosProductos onAddToCart={handleAddToCart} />} />
         <Route path="/categoria/:categoria" element={<ProductosPorCategoria onAddToCart={handleAddToCart} />} />
         <Route path="/carrito" element={<Carrito itemsCarrito={itemsCarrito} completarCompra={handleCompletePurchase} />} />
+        
       </Routes>
       <Footer />
     </div>

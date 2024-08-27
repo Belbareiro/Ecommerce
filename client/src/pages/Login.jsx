@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.css';
+import axios from 'axios';
+import './Login.css'; // Asegúrate de que el archivo CSS esté presente para el estilo
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        // Aquí iría la lógica para autenticar al usuario
-        console.log('Correo:', email);
-        console.log('Contraseña:', password);
-        // Redirige al usuario después del login exitoso
-        navigate('/');
+        try {
+            const response = await axios.post('http://localhost:5002/api/auth/login', { email, password });
+            localStorage.setItem('authToken', response.data.token);
+            navigate('/admin'); // Redirige a la página de administración
+        } catch (error) {
+            console.error('Error al iniciar sesión:', error);
+            alert('Credenciales inválidas o error en el servidor.');
+        }
     };
 
     return (
