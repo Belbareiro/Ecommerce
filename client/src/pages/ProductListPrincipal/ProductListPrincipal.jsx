@@ -1,11 +1,11 @@
-import React from 'react';
-import '../ProductListPrincipal/ProductListPrincipal.css'
+import React, { useState, useEffect } from 'react';
+import '../ProductListPrincipal/ProductListPrincipal.css';
 import globeIcon from '../assets/iconsProductListP/globeIcon.png';
 import mannequinIcon from '../assets/iconsProductListP/mannequinIcon.png';
 import offerIcon from '../assets/iconsProductListP/offerIcon.png';
-import secureIcon from '../assets/iconsProductListP/secureIcon.png'
+import secureIcon from '../assets/iconsProductListP/secureIcon.png';
 
-
+const ProducListPrincipal = () => {
   const [productos, setProductos] = useState([]);  
   const [loading, setLoading] = useState(true);  
   const [error, setError] = useState(null); 
@@ -48,8 +48,6 @@ import secureIcon from '../assets/iconsProductListP/secureIcon.png'
     return acc;
   }, {});
 
-
-const ProducListPrincipal = () => {
   return (
     <div className="gallery">
       <div className='featured'><h2>Productos Destacados</h2></div>
@@ -94,4 +92,5 @@ const ProducListPrincipal = () => {
     </div>
   );
 };
+
 export default ProducListPrincipal;

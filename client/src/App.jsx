@@ -8,6 +8,8 @@ import AdminPage from './pages/AdminPage/AdminPage';
 import TodosLosProductos from './pages/TodosLosProductos/TodosLosProductos';
 import ProductosPorCategoria from './pages/ProductosPorCategoria/ProductosPorCategoria';
 import Carrito from './pages/Carrito/Carrito';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 const App = () => {
   const [cartCount, setCartCount] = useState(0);
@@ -30,7 +32,7 @@ const App = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/products');
+        const response = await axios.get('http:/localhost:5000/api/products');
         setProductos(response.data);
       } catch (error) {
         console.error('Error al obtener los productos:', error);
