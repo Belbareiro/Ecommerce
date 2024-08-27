@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <div className="footer">
             <div className="footer-top">
-                <span>OFERTA DE HASTA 70% DE DESCUENTO EN TODA LA ROPA Y ARTÍCULOS DE MODA, EN TODAS LAS MARCAS.</span>
+                <span>VÍSTETE SIN LÍMITES. DESCUBRE TU ESTILO EN D'BCLAM.</span>
             </div>
             <div className='footer-medio'>
                 <div>

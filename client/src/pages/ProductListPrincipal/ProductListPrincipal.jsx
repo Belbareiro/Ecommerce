@@ -82,11 +82,6 @@ const ProducListPrincipal = () => {
           <p>Seleccionamos productos de alta calidad para garantizar tu satisfacción y la durabilidad de cada compra.</p>
         </div>
         <div className='iconSeccion'>
-          <img src={offerIcon} alt="" />
-          <h2>Mejores ofertas</h2>
-          <p>Ofrecemos promociones y descuentos especiales para que consigas los productos que amas a precios increíbles.</p>
-        </div>
-        <div className='iconSeccion'>
           <img src={secureIcon} alt="" />
           <h2>Pago Seguro</h2>
           <p>Tu seguridad es nuestra prioridad. Utilizamos métodos de pago seguros y protegemos toda tu información personal.</p>
