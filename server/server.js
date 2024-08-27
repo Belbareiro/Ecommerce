@@ -7,7 +7,7 @@ const productRoutes = require('./routes/products'); // Rutas para los productos
 const authRoutes = require('./routes/auth'); // Rutas para la autenticación
 
 const app = express();
-const PORT = process.env.PORT || 5002;
+const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());

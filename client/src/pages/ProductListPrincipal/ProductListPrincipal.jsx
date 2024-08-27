@@ -6,37 +6,37 @@ import offerIcon from '../assets/iconsProductListP/offerIcon.png';
 import secureIcon from '../assets/iconsProductListP/secureIcon.png';
 
 const ProducListPrincipal = () => {
-  const [productos, setProductos] = useState([]);  
-  const [loading, setLoading] = useState(true);  
-  const [error, setError] = useState(null); 
+  const [productos, setProductos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  useEffect(() => {  
-    const fetchProducts = async () => {  
-      try {  
-        const response = await fetch('http://localhost:5000/api/products/');  
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/products/');
 
-        if (!response.ok) {  
-          throw new Error('Error al cargar los productos');   
-        }  
-        const data = await response.json();  
-        setProductos(data); 
-      } catch (error) {  
-        setError(error.message);   
-      } finally {  
-        setLoading(false); 
-      }  
-    };  
-  
-    fetchProducts();  
-  }, []); 
+        if (!response.ok) {
+          throw new Error('Error al cargar los productos');
+        }
+        const data = await response.json();
+        setProductos(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  if (loading) {  
-    return <div>Cargando productos...</div>; 
-  }  
+    fetchProducts();
+  }, []);
 
-  if (error) {  
-    return <div>Error: {error}</div>; 
-  }  
+  if (loading) {
+    return <div>Cargando productos...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   const productosFiltrados = productos.reduce((acc, producto) => {
     if (!acc[producto.categoria]) {
@@ -51,10 +51,9 @@ const ProducListPrincipal = () => {
   return (
     <div className="gallery">
       <div className='featured'><h2>Productos Destacados</h2></div>
-      <div className='seccion'>
+      <div className='seccionUno'>
         {Object.keys(productosFiltrados).map((categoria) => (
           <div key={categoria} className="seccion">
-            <h3>{categoria}</h3>
             {productosFiltrados[categoria].map((producto) => (
               <div key={producto._id} className="producto-card">
                 <img src={`http://localhost:5000/uploads/${producto.imagen}`} alt={producto.nombre} onError={(e) => { e.target.onerror = null; e.target.src = 'ruta/a/imagen/placeholder.jpg'; }} />
