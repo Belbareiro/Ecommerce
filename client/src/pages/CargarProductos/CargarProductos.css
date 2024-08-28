@@ -1,3 +1,30 @@
+.cargar-producto-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.success-message {
+    color: green;
+    font-size: 1.2rem;
+    margin-bottom: 20px; /* Espacio entre el mensaje y el formulario */
+}
+
+.error-message {
+    color: red;
+    font-size: 1rem;
+    margin-bottom: 20px; /* Espacio entre el mensaje de error y el formulario */
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacio entre los campos del formulario */
+    width: 100%;
+    max-width: 500px;
+}
+
 .botones {
     display: flex;
     flex-direction: row;
@@ -6,17 +33,13 @@
 
 .botones button {
     background-color: #0077b6;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.cargar-producto-container {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-
-}
-
-.cargar-producto-container .cargar-producto-form {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+.botones button:hover {
+    background-color: #005f73;
 }
