@@ -154,11 +154,23 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 20px;
+  border: 2px solid red; /* Borde rojo alrededor del cuadro */
+  border-radius: 10px; /* Bordes redondeados */
+  background-color: #fbe0e0; /* Fondo rojo claro */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  margin: 20px; /* Margen alrededor del cuadro */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para animación */
 }
-
 
 .mensaje-carrito-vacio h3 {
   color: red;
   font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.mensaje-carrito-vacio p {
+  font-size: 1.2rem;
+  color: #333; /* Color del texto */
 }
 
