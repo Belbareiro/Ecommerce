@@ -31,6 +31,12 @@ const Footer = () => {
                         <li>Accesorios para hombre</li>
                     </ul>
                 </div>
+                <div>
+                    <span>Horario de Atención</span>
+                       <p>Lunes a Viernes: 09:00hs a 19:00hs </p>
+                       <p>Sábado: 09:00hs a 20:00hs </p>
+                       <p>Domingo: 12:00hs a 18:00hs </p>
+                </div>
             </div>
             <div className="footer-bottom">
                 <p>Copyrigth © D'BCLAM, desarrollado por D'BCLAM </p>
