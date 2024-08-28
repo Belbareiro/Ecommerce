@@ -3,6 +3,7 @@ import './Navbar.css';
 import AboutUs from './AboutUs';
 import Contact from './Contact';
 import { FaShoppingCart } from 'react-icons/fa';
+import { Link } from 'react-router-dom'; 
 
 const Navbar = ({ cartCount }) => {
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
@@ -21,17 +22,18 @@ const Navbar = ({ cartCount }) => {
       <nav className="navbar">
         <div className="navbar-left">
           <ul className="navbar-menu">
-            <li><a href="/todosLosProductos">TODO</a></li>
-            <li><a href="/categoria/mujer">MUJERES</a></li>
-            <li><a href="/categoria/hombre">HOMBRES</a></li>
-            <li><a href="/categoria/accesorios">ACCESORIOS</a></li>
+            <li><Link to="/">PRINCIPAL</Link></li> {/* Para volver a la pagina principal*/}
+            <li><Link to="/todosLosProductos">TODO</Link></li>
+            <li><Link to="/categoria/mujer">MUJERES</Link></li>
+            <li><Link to="/categoria/hombre">HOMBRES</Link></li>
+            <li><Link to="/categoria/accesorios">ACCESORIOS</Link></li>
           </ul>
         </div>
         <div className="navbar-right">
           <ul className="navbar-menu">
             <li><a href="#" onClick={toggleAboutModal}>ACERCA DE</a></li>
             <li><a href="#" onClick={toggleContactModal}>CONTACTO</a></li>
-            <li><a href="/carrito"><FaShoppingCart /> {cartCount}</a></li>
+            <li><Link to="/carrito"><FaShoppingCart /> {cartCount}</Link></li> {/* Usa Link aquí también */}
           </ul>
         </div>
       </nav>
@@ -46,3 +48,4 @@ const Navbar = ({ cartCount }) => {
 };
 
 export default Navbar;
+
