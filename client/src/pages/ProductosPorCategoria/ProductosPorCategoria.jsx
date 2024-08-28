@@ -28,7 +28,7 @@ const ProductosPorCategoria = ({ onAddToCart }) => {
 
     return (
         <div className="productos-por-categoria">
-            <h2>Productos en la categoría: {categoria}</h2>
+            <h2>{categoria}</h2>
             {error && <p className="error">{error}</p>} {/* Mostrar mensaje de error si hay */}
 
             <div className="galeria">
@@ -39,7 +39,6 @@ const ProductosPorCategoria = ({ onAddToCart }) => {
                             <h3>{producto.nombre}</h3>
                             <p>Precio: {producto.precio} Gs.</p>
                             <p>{producto.descripcion}</p>
-                            <p>Categoría: {producto.categoria}</p>
                             <button onClick={() => onAddToCart(producto)}>Añadir al carrito</button>
                         </div>
                     ))
