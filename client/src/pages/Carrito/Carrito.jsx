@@ -26,7 +26,7 @@ const Carrito = ({ itemsCarrito, completarCompra }) => {
 
   return (
     <div className="carrito"> {/* Contenedor principal del carrito */}
-      <h1>Mi carrito de compras</h1>
+      <h1>Carrito de compras</h1>
       {compraCompleta ? ( // Si la compra está completa, muestra el mensaje de éxito
         <div className="mensaje-exito">
           <h3>¡Compra completada con éxito!</h3>
