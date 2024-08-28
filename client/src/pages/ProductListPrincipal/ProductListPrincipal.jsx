@@ -55,15 +55,22 @@ const ProducListPrincipal = () => {
       <div className='seccionUno'>
         {Object.keys(productosFiltrados).map((categoria) => (
           <div key={categoria} className="seccion">
-            <div> <Link to={`/categoria/${categoria}`}>
+            <Link to={`/categoria/${categoria}`} className="categoria-link">
               <h3>{categoria}</h3>
-            </Link></div>
-            <div>
+            </Link>
+            <div className="productos">
               {productosFiltrados[categoria].map((producto) => (
                 <div key={producto._id} className="producto-card">
-                  <img src={`http://localhost:5000/uploads/${producto.imagen}`} alt={producto.nombre} onError={(e) => { e.target.onerror = null; e.target.src = 'ruta/a/imagen/placeholder.jpg'; }} />
+                  <img
+                    src={`http://localhost:5000/uploads/${producto.imagen}`}
+                    alt={producto.nombre}
+                    onError={(e) => {
+                      e.target.onerror = null; 
+                      e.target.src = 'ruta/a/imagen/placeholder.jpg'; 
+                    }}
+                  />
                   <h3>{producto.nombre}</h3>
-                  <p>Precio: ${producto.precio.toFixed(2)} Gs.</p>
+                  <p>Precio: {producto.precio.toFixed(2)} Gs.</p>
                   <p>Categoría: {producto.categoria}</p>
                 </div>
               ))}
