@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
-import Products from './pages/PageSection/PageSection';
+import PageSection from './pages/PageSection/PageSection'; // Asegúrate de que el nombre sea correcto
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import AdminPage from './pages/AdminPage/AdminPage';
@@ -75,7 +75,7 @@ const App = () => {
     <div>
       <Navbar cartCount={cartCount} />
       <Routes>
-        <Route path="/" element={<Products productos={productos} onAddToCart={handleAddToCart} />} />
+        <Route path="/" element={<PageSection productos={productos} onAddToCart={handleAddToCart} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/admin" element={<AdminPage
@@ -83,7 +83,6 @@ const App = () => {
         <Route path="/todosLosProductos" element={<TodosLosProductos onAddToCart={handleAddToCart} />} />
         <Route path="/categoria/:categoria" element={<ProductosPorCategoria onAddToCart={handleAddToCart} />} />
         <Route path="/carrito" element={<Carrito itemsCarrito={itemsCarrito} completarCompra={handleCompletePurchase} />} />
-
       </Routes>
       <Footer />
     </div>
@@ -91,3 +90,4 @@ const App = () => {
 };
 
 export default App;
+
