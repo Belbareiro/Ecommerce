@@ -23,7 +23,7 @@ const Navbar = ({ cartCount }) => {
         <div className="navbar-left">
           <ul className="navbar-menu">
             <li><Link to="/">PRINCIPAL</Link></li> {/* Para volver a la pagina principal*/}
-            <li><Link to="/todosLosProductos">TODO</Link></li>
+            <li><Link to="/todosLosProductos">TODOS</Link></li>
             <li><Link to="/categoria/mujer">MUJERES</Link></li>
             <li><Link to="/categoria/hombre">HOMBRES</Link></li>
             <li><Link to="/categoria/accesorios">ACCESORIOS</Link></li>
