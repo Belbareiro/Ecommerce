@@ -16,8 +16,10 @@ const ProductList = ({ productos, eliminarProductoDeLaLista, setProductoEditado 
                             <p>Descripción: {producto.descripcion}</p>
                             <p>Categoría: {producto.categoria}</p>
                             <img src={`http://localhost:5000/uploads/${producto.imagen}`} alt={producto.nombre} />
-                            <button onClick={() => eliminarProductoDeLaLista(producto._id)}>Eliminar</button>
-                            <button onClick={() => setProductoEditado(producto)}>Editar</button>
+                            <div className='botones'>
+                                <button onClick={() => eliminarProductoDeLaLista(producto._id)}>Eliminar</button>
+                                <button onClick={() => setProductoEditado(producto)}>Editar</button>
+                            </div>
                         </div>
                     ))
                 ) : (

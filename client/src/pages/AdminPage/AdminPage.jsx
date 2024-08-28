@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import CargarProductos from '../CargarProductos';
+import CargarProductos from '../CargarProductos/CargarProductos';
 import ProductList from '../ProductList/ProductList';
 import axios from 'axios';
 import './AdminPage.css';
@@ -91,7 +91,7 @@ const AdminPage = () => {
     };
     return (
         <div>
-            <h1>Página de Administrador</h1>
+            <h1>Página del Administrador</h1>
             {!isAuthenticated ? (
                 <div>
                     <form onSubmit={handleLogin}>

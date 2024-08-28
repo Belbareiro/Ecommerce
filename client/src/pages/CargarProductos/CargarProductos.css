@@ -1,0 +1,22 @@
+.botones {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.botones button {
+    background-color: #0077b6;
+}
+
+.cargar-producto-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.cargar-producto-container .cargar-producto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}

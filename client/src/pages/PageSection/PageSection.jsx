@@ -10,9 +10,9 @@ import { Link } from 'react-router-dom';
 
 const PageSection = () => {
   const photos = [
-    { id: 1, src: photo1, title: 'Mira ya estas gafas especiales para ti', description: 'Resalta tu estilo con nuestrass gafas. Cada  par es una declaración de moda que te hará destacar de la multitud.', buttonText: 'COMPRAR AHORA' },
-    { id: 2, src: photo2, title: 'Camisas de manga larga: estilo y comodidad para hombre', description: 'Descubre nuestra colección de camisas de manga larga, perfectas para cualquier ocasión.', buttonText: 'COMPRAR AHORA' },
-    { id: 3, src: photo3, title: 'Mira ahora los productos que tenemos para ti', description: 'Explora nuestra amplia gama de productos y encuentra lo que necesitas para tu guardarropa.', buttonText: 'VER MÁS' },
+    { id: 1, src: photo1, title: 'Mira ya estas gafas especiales para ti', description: 'Resalta tu estilo con nuestrass gafas. Cada  par es una declaración de moda que te hará destacar de la multitud.', buttonText: 'COMPRAR AHORA', route: '/categoria/mujer' },
+    { id: 2, src: photo2, title: ' Estilo y comodidad para el', description: 'Descubre tu estilo único con nuestra colección de ropa masculina.', buttonText: 'COMPRAR AHORA', route: '/categoria/hombre' },
+    { id: 3, src: photo3, title: 'Mira ahora los productos que tenemos para ti', description: 'Explora nuestra amplia gama de productos y encuentra lo que necesitas para tu guardarropa.', buttonText: 'VER MÁS', route: '/todosLosProductos' },
   ];
   return (
     <div className="page-section">
@@ -33,7 +33,7 @@ const PageSection = () => {
             </div>
             <p className="description">{photo.description}</p>
             <button className="button">
-              <Link to="/todosLosProductos">
+              <Link to={photo.route}>
                 {photo.buttonText}
               </Link>
             </button>

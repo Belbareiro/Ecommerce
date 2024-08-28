@@ -1,3 +1,8 @@
 .productos-por-categoria .galeria img {
     width: 200px;
 }
+
+.producto-card {
+    background-color: #a8d7f0;
+    padding: 20px;
+}
