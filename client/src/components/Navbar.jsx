@@ -1,27 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css';
-import { FaUser, FaShoppingCart } from 'react-icons/fa'; // Importar los iconos
-import { Link } from 'react-router-dom';
+import AboutUs from './AboutUs';
+import Contact from './Contact';
+import { FaShoppingCart } from 'react-icons/fa';
 
 const Navbar = ({ cartCount }) => {
+  const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const toggleAboutModal = () => {
+    setIsAboutModalOpen(!isAboutModalOpen);
+  };
+
+  const toggleContactModal = () => {
+    setIsContactModalOpen(!isContactModalOpen);
+  };
+
   return (
-    <nav className="navbar">
-      <div className="navbar-left">
-        <ul className="navbar-menu">
-          <li><Link to="/todosLosProductos">TODO</Link></li>
-          <li><Link to="/categoria/mujer">MUJERES</Link></li>
-          <li><Link to="/categoria/hombre">HOMBRES</Link></li>
-          <li><Link to="/categoria/accesorios">ACCESORIOS</Link></li>
-        </ul>
-      </div>
-      <div className="navbar-right">
-        <ul className="navbar-menu">
-          <li><Link to="/acercaDe">ACERCA DE</Link></li>
-          <li><Link to="/contacto">CONTACTO</Link></li>
-          <li><Link to="/carrito"><FaShoppingCart /> {cartCount}</Link></li>
-        </ul>
-      </div>
-    </nav>
+    <>
+      <nav className="navbar">
+        <div className="navbar-left">
+          <ul className="navbar-menu">
+            <li><a href="/todosLosProductos">TODO</a></li>
+            <li><a href="/categoria/mujer">MUJERES</a></li>
+            <li><a href="/categoria/hombre">HOMBRES</a></li>
+            <li><a href="/categoria/accesorios">ACCESORIOS</a></li>
+          </ul>
+        </div>
+        <div className="navbar-right">
+          <ul className="navbar-menu">
+            <li><a href="#" onClick={toggleAboutModal}>ACERCA DE</a></li>
+            <li><a href="#" onClick={toggleContactModal}>CONTACTO</a></li>
+            <li><a href="/carrito"><FaShoppingCart /> {cartCount}</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      {/* Modal de About Us */}
+      <AboutUs isOpen={isAboutModalOpen} onClose={toggleAboutModal} />
+
+      {/* Modal de Contacto */}
+      <Contact isOpen={isContactModalOpen} onClose={toggleContactModal} />
+    </>
   );
 };
 
