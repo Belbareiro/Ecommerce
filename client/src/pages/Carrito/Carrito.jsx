@@ -1,48 +1,43 @@
 import React, { useState } from 'react';
 import './Carrito.css'; 
 
-//recibe dos props: `itemsCarrito` (productos en el carrito) y `completarCompra` (una función para finalizar la compra)
 const Carrito = ({ itemsCarrito, completarCompra }) => {
-  // Estado local `compraCompleta`, inicia como `false`, y se usa para mostrar un mensaje de éxito cuando la compra se completa
   const [compraCompleta, setCompraCompleta] = useState(false);
 
-  // Función que calcula el total a pagar sumando el precio por cantidad de cada producto en el carrito
   const calcularTotal = (items) => {
     let total = 0;
     for (const item of items) {
-      total += item.precio * item.cantidad; // Suma el total multiplicando el precio por la cantidad de cada producto
+      total += item.precio * item.cantidad;
     }
-    return total; // Devuelve el total calculado
+    return total;
   };
 
-  const total = calcularTotal(itemsCarrito); // Calcula el total usando la función anterior y los productos del carrito
+  const total = calcularTotal(itemsCarrito);
 
-  // Función que se llama cuando el usuario hace clic en "Completar Compra"
   const manejarCompletarCompra = () => {
-    completarCompra(); // Llama a la función `completarCompra` (probablemente para procesar el pago o guardar la compra)
-    setCompraCompleta(true); // Actualiza el estado `compraCompleta` a `true`, lo que cambia la interfaz para mostrar un mensaje de éxito
+    completarCompra();
+    setCompraCompleta(true);
   };
-
 
   return (
-    <div className="carrito"> {/* Contenedor principal del carrito */}
+    <div className="carrito">
       <h1>Carrito de compras</h1>
-      {compraCompleta ? ( // Si la compra está completa, muestra el mensaje de éxito
+      {compraCompleta ? (
         <div className="mensaje-exito">
           <h3>¡Compra completada con éxito!</h3>
           <p>Gracias por tu compra. ¡Regresa pronto!</p>
         </div>
-      ) : itemsCarrito.length > 0 ? ( // Si hay productos en el carrito, los muestra en una lista
+      ) : itemsCarrito.length > 0 ? (
         <div className="carrito-contenido">
-          <ul className="carrito-lista"> {/* Lista de productos en el carrito */}
-            {itemsCarrito.map((item) => ( // Recorre los productos en el carrito y renderiza cada uno
-              <li key={item._id} className="carrito-item"> {/* Cada producto del carrito */}
+          <ul className="carrito-lista">
+            {itemsCarrito.map((item) => (
+              <li key={item._id} className="carrito-item">
                 <img
-                  src={item.imagen ? `http://localhost:5000/uploads/${item.imagen}` : 'ruta/default/image.jpg'} // Muestra la imagen del producto o una imagen por defecto
+                  src={item.imagen ? `http://localhost:5000/uploads/${item.imagen}` : 'ruta/default/image.jpg'}
                   alt={item.nombre}
                   className="carrito-item-image"
                 />
-                <div className="carrito-item-details"> {/* Detalles del producto */}
+                <div className="carrito-item-details">
                   <h3>{item.nombre}</h3>
                   <p>Precio individual: {item.precio} Gs.</p>
                   <p>Cantidad: {item.cantidad}</p>
@@ -50,20 +45,20 @@ const Carrito = ({ itemsCarrito, completarCompra }) => {
               </li>
             ))}
           </ul>
-          {/* Resumen de la compra con el total */}
           <div className="carrito-resumen">
             <div className="carrito-resumen-item">
-              <span className="carrito-total-titulo">Total:</span> 
-              <span className="carrito-total-monto">{total} Gs.</span> 
+              <span className="carrito-total-titulo">Total:</span>
+              <span className="carrito-total-monto">{total} Gs.</span>
             </div>
-            <button onClick={manejarCompletarCompra} className="carrito-completar-compra-button"> {/* Botón para completar la compra */}
+            <button onClick={manejarCompletarCompra} className="carrito-completar-compra-button">
               Completar Compra
             </button>
           </div>
         </div>
-      ) : ( // Si el carrito está vacío, muestra un mensaje indicándolo
+      ) : (
         <div className="mensaje-carrito-vacio">
           <h3>Su carrito está vacío...</h3>
+          <p>Agregue algunos productos para continuar.</p>
         </div>
       )}
     </div>
