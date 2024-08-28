@@ -75,25 +75,46 @@
     word-break: break-all;
     overflow-wrap: break-word;
 }
+
 /* Estilos para el botón */
 .content .photo .button {
     position: absolute;
     bottom: 10px;
     left: 10px;
-    background-color: #b7bcc2;
-    color: #0f0e0e;
+    background-color: #0077b6;
+    /* Color de fondo azul */
+    color: #fff;
+    /* Color de texto blanco */
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
     font-weight: bold;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
 }
 
+.content .photo .button:hover {
+    background-color: #000;
+    /* Color de fondo negro al pasar el cursor */
+    color: #0077b6;
+    /* Color de texto azul al pasar el cursor */
+}
+
 .content .photo .button a {
     text-decoration: none;
-    color: inherit; /* Hereda el color del botón */
+    color: inherit;
+    /* Hereda el color del botón */
     display: inline-block;
-    width: 100%; /* Asegúrate de que el enlace ocupe todo el espacio del botón */
-    height: 100%; /* Asegúrate de que el enlace ocupe todo el espacio del botón */
-    line-height: normal; /* Ajusta la altura de línea para alinear el texto */
-    text-align: center; /* Alinea el texto al centro del botón */
+    width: 100%;
+    /* Asegúrate de que el enlace ocupe todo el espacio del botón */
+    height: 100%;
+    /* Asegúrate de que el enlace ocupe todo el espacio del botón */
+    line-height: normal;
+    /* Ajusta la altura de línea para alinear el texto */
+    text-align: center;
+    /* Alinea el texto al centro del botón */
 }

@@ -19,7 +19,6 @@ const Navbar = ({ cartCount }) => {
           <li><Link to="/acercaDe">ACERCA DE</Link></li>
           <li><Link to="/contacto">CONTACTO</Link></li>
           <li><Link to="/carrito"><FaShoppingCart /> {cartCount}</Link></li>
-          <li><Link to="#"><FaUser /></Link></li>
         </ul>
       </div>
     </nav>
