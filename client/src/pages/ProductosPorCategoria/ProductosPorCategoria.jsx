@@ -28,7 +28,7 @@ const ProductosPorCategoria = ({ onAddToCart }) => {
 
     return (
         <div className="productos-por-categoria">
-            <h2>{categoria}</h2>
+            <h2>Bienvenido a la sección de {categoria}</h2>
             {error && <p className="error">{error}</p>} {/* Mostrar mensaje de error si hay */}
 
             <div className="galeria">
