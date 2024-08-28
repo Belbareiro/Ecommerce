@@ -89,39 +89,44 @@ const AdminPage = () => {
             console.error("Error al editar el producto:", error);
         }
     };
+
     return (
-        <div>
+        <div className="admin-container">
             <h1>Página del Administrador</h1>
             {!isAuthenticated ? (
-                <div>
-                    <form onSubmit={handleLogin}>
-                        <h2>Iniciar sesión</h2>
-                        <div>
-                            <label>Correo:</label>
-                            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                        </div>
-                        <div>
-                            <label>Contraseña:</label>
-                            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                        </div>
-                        <button type="submit">Iniciar sesión</button>
-                    </form>
-                    <form onSubmit={handleRegister}>
-                        <h2>Registro</h2>
-                        <div>
-                            <label>Nombre de la empresa:</label>
-                            <input type="text" value={companyName} onChange={(e) => setCompanyName(e.target.value)} required />
-                        </div>
-                        <div>
-                            <label>Correo:</label>
-                            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                        </div>
-                        <div>
-                            <label>Contraseña:</label>
-                            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                        </div>
-                        <button type="submit">Registrar</button>
-                    </form>
+                <div className="form-wrapper">
+                    <div className="form-container">
+                        <form onSubmit={handleLogin}>
+                            <h2>Iniciar sesión</h2>
+                            <div className="form-group">
+                                <label>Correo:</label>
+                                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                            </div>
+                            <div className="form-group">
+                                <label>Contraseña:</label>
+                                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                            </div>
+                            <button type="submit">Iniciar sesión</button>
+                        </form>
+                    </div>
+                    <div className="form-container">
+                        <form onSubmit={handleRegister}>
+                            <h2>Registro</h2>
+                            <div className="form-group">
+                                <label>Nombre de la empresa:</label>
+                                <input type="text" value={companyName} onChange={(e) => setCompanyName(e.target.value)} required />
+                            </div>
+                            <div className="form-group">
+                                <label>Correo:</label>
+                                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                            </div>
+                            <div className="form-group">
+                                <label>Contraseña:</label>
+                                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                            </div>
+                            <button type="submit">Registrar</button>
+                        </form>
+                    </div>
                 </div>
             ) : (
                 <div>
@@ -143,7 +148,7 @@ const AdminPage = () => {
                             });
                         }}>
                             <h2>Editar Producto</h2>
-                            <div>
+                            <div className="form-group">
                                 <label>Nombre:</label>
                                 <input
                                     type="text"
@@ -152,7 +157,7 @@ const AdminPage = () => {
                                     required
                                 />
                             </div>
-                            <div>
+                            <div className="form-group">
                                 <label>Precio:</label>
                                 <input
                                     type="number"
@@ -161,7 +166,7 @@ const AdminPage = () => {
                                     required
                                 />
                             </div>
-                            <div>
+                            <div className="form-group">
                                 <label>Descripción:</label>
                                 <input
                                     type="text"
@@ -170,30 +175,28 @@ const AdminPage = () => {
                                     required
                                 />
                             </div>
-                            <div>
+                            <div className="form-group">
                                 <label>Categoría:</label>
-                                <select
+                                <input
+                                    type="text"
                                     value={productoEditado.categoria}
                                     onChange={(e) => setProductoEditado({ ...productoEditado, categoria: e.target.value })}
                                     required
-                                >
-                                    <option value="mujer">Mujer</option>
-                                    <option value="hombre">Hombre</option>
-                                    <option value="accesorios">Accesorios</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label>Imagen:</label>
-                                <input
-                                    type="file"
-                                    onChange={(e) => setProductoEditado({ ...productoEditado, imagen: e.target.files[0] })}
                                 />
                             </div>
-                            <button type="submit">Guardar Cambios</button>
+                            <div className="form-group">
+                                <label>Imagen:</label>
+                                <input
+                                    type="text"
+                                    value={productoEditado.imagen}
+                                    onChange={(e) => setProductoEditado({ ...productoEditado, imagen: e.target.value })}
+                                    required
+                                />
+                            </div>
+                            <button type="submit">Actualizar</button>
                         </form>
                     )}
                 </div>
-
             )}
         </div>
     );
